@@ -1,7 +1,7 @@
 ---
 title: 搭建 Hexo 博客
 date: 2020-03-14 14:50:31
-tags:
+tags: 博客
 ---
 来源[知乎](https://zhuanlan.zhihu.com/p/35668237)
 [原文](https://godweiyang.com/2018/04/13/hexo-blog/)
