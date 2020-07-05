@@ -2,7 +2,8 @@
 title: 【PHP面试题】什么是 引用变量？在PHP当中，用什么符号定义引用变量？
 date: 2020-07-04 17:48:22
 tags: 
-  - PHP 
+  - PHP面试
+  - PHP基础
   - 引用变量
 categories: PHP
 ---

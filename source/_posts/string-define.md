@@ -8,7 +8,8 @@ date: 2020-07-05 17:26:44
 password:
 summary:
 tags: 
-    - PHP
+    - PHP面试
+    - PHP基础
     - 字符串
     - 数据类型
 categories: PHP

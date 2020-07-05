@@ -8,7 +8,8 @@ date: 2020-07-05 20:39:27
 password:
 summary:
 tags: 
-    - PHP
+    - PHP面试
+    - PHP基础
     - 运算符
 categories: PHP
 ---
@@ -19,16 +20,16 @@ categories: PHP
 #### 1） PHP运算符优先级（从高到低）
 - 递增 / 递减
 - !
-- 算术运算符
+- 算术运算符(+-*/)
 - 大小比较
 - （不）相等比较
 - 引用
 - 位运算符(^)
 - 位运算符(|)
-- 逻辑与
-- 逻辑或
-- 三目
-- 赋值
+- 逻辑与(&&)
+- 逻辑或(||)
+- 三目(?:)
+- 赋值($a = false)
 - and
 - xor
 - or
@@ -94,10 +95,14 @@ $a = 0;
 $b = 0;
 
 if ($a = 3 > 0 || $b = 3 > 0) {
+    var_dump($a); // bool(true)
+    var_dump($b); // int(0)
     $a++;
     $b++;
-    echo $a."\n"; 
-    echo $b."\n"; 
+    echo $a."\n"; // 1
+    var_dump($a); // bool(true)
+    echo $b."\n"; // 1
+    var_dump($b); // int(1)
 }
 ```
 **分析：**
@@ -112,12 +117,27 @@ if ($a = 3 > 0 || $b = 3 > 0) {
 	$a = true;
 	$b = 0;
 3） 递增运算
-	$a++; // $a = true; true++; => true
+	$a++; // $a = true; true++; => true  => 1
 	$b++; // $b = 0; 0++; => 1
+```
+```PHP
+$a = 0;
+$b = 0;
+
+if ($a = 3 > 0 || $b = 3 > 0) {
+    var_dump($a); // bool(true)
+    var_dump($b); // int(0)
+    $a++;
+    $b++;
+    echo $a."\n"; // 1
+    var_dump($a); // bool(true)
+    echo $b."\n"; // 1
+    var_dump($b); // int(1)
+}
 ```
 
 **运算结果：**
 ```PHP
 $a = true;
-$b = 1;0
+$b = 1;
 ```

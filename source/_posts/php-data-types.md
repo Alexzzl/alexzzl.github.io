@@ -8,6 +8,8 @@ date: 2020-07-05 17:59:59
 password:
 summary:
 tags: 
+    - PHP面试
+    - PHP基础
     - 数据类型
     - 常量
 categories: PHP
