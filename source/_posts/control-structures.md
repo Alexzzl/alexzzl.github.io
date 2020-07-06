@@ -35,29 +35,29 @@ categories: PHP
 
 #### 1） if …elseif：
 
-- 在 elseif语句中 只能有一个表达式为 true，即 在 elseif语句中 只能有一个语句块被执行，多个 elseif从句是排斥关系；
-- 使用 elseif语句 有一个基本原则： 总是把优先范围小的条件放在前面处理。【即把可能性大的放到前面
+- 在 elseif 语句中 只能有一个表达式为 true，即 在 elseif 语句中 只能有一个语句块被执行，多个 elseif从句是排斥关系；
+- 使用 elseif 语句 有一个基本原则： 总是把优先范围小的条件放在前面处理。【即把可能性大的放到前面】
 
 #### 2） switch…case…：
 
-- 和if不同的是，switch后面的控制表达式的数据类型只能是整型、浮点型或者字符串；
-- continue语句 作用到switch的作用类似于break；
-- 跳出switch外的循环，可以使用 continue2；
-- 底层原理：switch…case会生成跳转表，直接跳转到对应case(不会一层一层去判断)；
-- 效率：如果条件比一个简单的比较要复杂得多，或者在一个很多次的循环中，那么用switch语句可能会快一些
+- 和 if 不同的是，switch 后面的控制表达式的数据类型只能是整型、浮点型或者字符串；
+- continue 语句 作用到 switch 的作用类似于 break ；
+- 跳出 switch 外的循环( for(){switch(){ case ...: ... continue2; }})，可以使用 continue2；
+- 底层原理：switch … case 会生成跳转表，直接跳转到对应 case (不会一层一层去判断)；
+- 效率：如果条件比一个简单的比较要复杂得多，或者在一个很多次的循环中，那么用 switch 语句可能会快一些
 
 代码执行：
 
 ```PHP
 for() {
     switch($var) {
-        case...;
+        case...:
         	break; // 等价于 continue;【如果需要其作用于 for循环，此处应为 continue2（跳出两层循环）】
-        case...;
+        case...:
         	break;
-        case...;
+        case...:
         	break;
-    default: ...;
+        default: ...:
         	break;
         
 	}
@@ -70,4 +70,4 @@ for() {
 ## 三. 真题：
 ### PHP中如何优化多个 if...else 语句的情况？
 - 表达式的可能性越大，越往前放；
-- 如果判断的是一个比较复杂的结构，且判断的结构是整型、浮点型或字符串类型，则可以使用 switch…case来进行替换，此时效率会提升。
+- 如果判断的是一个比较复杂的结构，且判断的结构是整型、浮点型或字符串类型，则可以使用 switch…case 来进行替换，此时效率会提升。
