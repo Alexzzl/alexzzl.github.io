@@ -92,3 +92,15 @@ echo $count; // 5
 echo get_count(); // null
 echo get_count(); // null++ = 1
 ```
+## 四、延伸考点
+默认情况下，函数参数通过值传递。如果希望允许函数修改它的值，必须通过引用传递参数(`&`)
+
+```PHP
+$a = 1;
+function myFun(&$a) 
+{
+    global $a = 2;
+}
+myFun($a); // 只能传递变量
+echo $a; // 2
+```
