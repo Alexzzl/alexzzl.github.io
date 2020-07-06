@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, Alex">
+    <meta name="keywords" content="【PHP面试题】什么是 引用变量？在PHP当中，用什么符号定义引用变量？, Alex">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | Alex</title>
+    <title>【PHP面试题】什么是 引用变量？在PHP当中，用什么符号定义引用变量？ | Alex</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -309,12 +309,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">【PHP面试题】什么是 引用变量？在PHP当中，用什么符号定义引用变量？</h1>
                 </div>
             </div>
         </div>
@@ -431,14 +431,31 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%8D%9A%E5%AE%A2/">
-                                <span class="chip bg-color">博客</span>
+                            <a href="/tags/PHP%E5%9F%BA%E7%A1%80/">
+                                <span class="chip bg-color">PHP基础</span>
+                            </a>
+                        
+                            <a href="/tags/PHP%E9%9D%A2%E8%AF%95/">
+                                <span class="chip bg-color">PHP面试</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%BC%95%E7%94%A8%E5%8F%98%E9%87%8F/">
+                                <span class="chip bg-color">引用变量</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/PHP/" class="post-category">
+                                PHP
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -447,7 +464,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2018-03-14
+                    2020-07-04
                 </div>
                 
 
@@ -463,15 +480,150 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <h2 id="一-PHP引用变量考察点"><a href="#一-PHP引用变量考察点" class="headerlink" title="一. PHP引用变量考察点"></a>一. PHP引用变量考察点</h2><h3 id="1-PHP的引用变量的概念及定义方式"><a href="#1-PHP的引用变量的概念及定义方式" class="headerlink" title="1. PHP的引用变量的概念及定义方式"></a>1. PHP的引用变量的概念及定义方式</h3><p>概念</p>
+<blockquote>
+<p>在PHP中，引用意味着用不同的名字访问同一个变量内容。</p>
+</blockquote>
+<p>定义方式</p>
+<blockquote>
+<p>使用 &amp; 符号</p>
+</blockquote>
+<h3 id="2-延伸：PHP引用变量的原理"><a href="#2-延伸：PHP引用变量的原理" class="headerlink" title="2. 延伸：PHP引用变量的原理"></a>2. 延伸：PHP引用变量的原理</h3><h4 id="1）赋值"><a href="#1）赋值" class="headerlink" title="1）赋值"></a>1）赋值</h4><blockquote>
+<p>将一个变量的值赋值给另一个变量，其中一个变量的值进行改变，会重新进行拷贝，此时会再开辟一个新的内存空间。</p>
+</blockquote>
+<pre class="line-numbers language-PHP"><code class="language-PHP">// 1. 定义一个变量
+$a = range(0, 1000); // 在内存中开辟一片空间，存储变量a
+var_dump(memory_get_usage()); // int(406512)
+
+// 2. 定义变量 b，将 a变量的值赋值给 b
+$b = $a; // 将变量b 指向 变量a开辟的空间中
+var_dump(memory_get_usage()); // int(406568)
+
+// 3. 对 a进行修改
+$a = range(0, 1000);
+var_dump(memory_get_usage()); // int(406568)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>原理：使用了 COW(Copy On Write)机制 : 对 <code>$a</code>或 <code>$b</code> 其中一个进行改变，内存空间才会发生改变。</strong></p>
+<ul>
+<li>在内存中开辟一片空间存储变量a;</li>
+<li>将变量b 指向 变量a的内存空间中;</li>
+<li>对变量a进行修改（对a进行写操作），此时会再开辟一片内存空间存储a和a和a和b（原来的a和a和a和b被改变）</li>
+</ul>
+<h4 id="2）引用"><a href="#2）引用" class="headerlink" title="2）引用"></a>2）引用</h4><blockquote>
+<p>两个变量无论何时都共用一个内存空间（对其中一个的值进行更改的时候，不会开辟新的内存空间）</p>
+</blockquote>
+<pre class="line-numbers language-PHP"><code class="language-PHP">// 1. 定义一个变量
+$a = range(0, 1000);
+var_dump(memory_get_usage());
+
+// 2. 定义变量b， 将a变量的值赋值给b
+$b = &$a;
+var_dump(memory_get_usage());
+
+// 3. 对a进行修改
+$a = range(0, 1000);
+var_dump(memory_get_usage());<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>原理：</p>
+<ul>
+<li>定义一个变量<code>$a</code>（开辟一个内存空间存储变量<code>$a</code>）；</li>
+<li>定义变量<code>$b</code>，将<code>$b</code>，将<code>$b</code>，将<code>$a</code>的地址给了<code>$b</code>，此时<code>$b</code>，此时<code>$b</code>，此时<code>$b</code>与<code>$a</code>指向同一个内存空间，且永远指向该内存空间（不会再重新拷贝，改掉的只是该内存空间的值）;</li>
+<li>对a进行修改（不会再开辟内存空间），此时a和a和a和b的值，都是修改后的值；</li>
+</ul>
+<h4 id="3）unset-只会取消引用，不会销毁内存空间"><a href="#3）unset-只会取消引用，不会销毁内存空间" class="headerlink" title="3）unset 只会取消引用，不会销毁内存空间"></a>3）unset 只会取消引用，不会销毁内存空间</h4><pre class="line-numbers language-PHP"><code class="language-PHP">$a = 1; // 开辟一个内存空间存储变量a,并赋值为1
+$b = &$a; // 将$a的引用赋值给$b，此时$a和$b指向同一个内存空间（永久指向）
+unset($b); // 此时取消的是$a和$b的引用，不会取消内存空间
+echo $a; // 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="4）-对象本身就是引用传递，因此，在修改的时候，不会再重新开辟内存空间"><a href="#4）-对象本身就是引用传递，因此，在修改的时候，不会再重新开辟内存空间" class="headerlink" title="4） 对象本身就是引用传递，因此，在修改的时候，不会再重新开辟内存空间"></a>4） 对象本身就是引用传递，因此，在修改的时候，不会再重新开辟内存空间</h4><pre class="line-numbers language-PHP"><code class="language-PHP">class Person
+{
+    public $name = 'zhangsan';
+}
+
+$p1 = new Person; // 开辟一个内存空间存储$p1
+$p2 = $p1; // 将$p1和$p2存入同一个内存空间（内存空间会变大）
+$p2->name = 'lisi'; // $p1,$p2都为lisi，因为指向的是同一个内存空间<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="二-真题"><a href="#二-真题" class="headerlink" title="二. 真题"></a>二. 真题</h2><h3 id="写出如下程序的输出结果："><a href="#写出如下程序的输出结果：" class="headerlink" title="写出如下程序的输出结果："></a>写出如下程序的输出结果：</h3><pre class="line-numbers language-PHP"><code class="language-PHP">$data = ['a', 'b', 'c'];
+
+foreach ($data as $key => $val) { 
+    $val = &$data[$key]; 
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>程序运行时，每一次循环结束后变量 <code>$data</code> 的值时什么？请解释</p>
+<p>程序执行完成后，变量 <code>$data</code> 的值时什么？请解释</p>
+<h4 id="1）答案："><a href="#1）答案：" class="headerlink" title="1）答案："></a>1）答案：</h4><pre class="line-numbers language-PHP"><code class="language-PHP">// 第一次循环
+$data = ['a', 'b', 'c'];
+// 第二次循环
+$data = ['b', 'b', 'c'];
+// 第三次循环
+$data = ['b', 'c', 'c'];
+
+// 程序执行完成后，变量 $data的值
+$data = ['b', 'b', 'c'];<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="2）解析："><a href="#2）解析：" class="headerlink" title="2）解析："></a>2）解析：</h4><pre class="line-numbers language-PHP"><code class="language-PHP">1）foreach ($data as $key => $val)
+    会将$data第一个元素的键名赋值给$key，将$data的第一个元素的值赋值给$val(即$k=0; $v=a;)
+2) $val = &$data[$key]; 
+    $v = &$data[0];（即$v拿了$data[0]的地址）
+    $v = &$data[0] = a（此时$data[0]和$v都指向 a内存空间）
+
+以上步骤即为：
+1）第一次循环：
+    $k = 0;
+    $v = a;
+    $v = &$data[0];
+    ($v = &$data[0] = a，$v 和 $data[0] 都指向 a内存空间) // 结果：$data = ['a','b','c'];
+2）第二次循环：
+    $k = 1;
+    $v = b;
+    $data[0] = b;
+    $v = &$data[1];
+    ($v = &$data[1] = b, $v 和 $data[1] 都指向 b内存空间) // 结果：$data = ['b','b','c'];
+3）第三次循环：    
+    $k = 2;
+    $v = c;
+    $data[1] = $c;
+    $v = &$data[2];
+    ($v = &$data[2] = c, $v 和 $data[1] 都指向 c内存空间) // 结果：$data = ['b','c','c'];<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="3）代码测试："><a href="#3）代码测试：" class="headerlink" title="3）代码测试："></a>3）代码测试：</h4><pre class="line-numbers language-PHP"><code class="language-PHP">$data = ['a', 'b', 'c'];
+
+foreach ($data as $k => $v) {
+    $v = &$data[$k];
+    var_dump($data);
+}
+var_dump($data);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>运行结果：</p>
+<pre class="line-numbers language-PHP"><code class="language-PHP">// 第一次循环后, $data 的值
+array(3) {
+  [0] =>
+  string(1) "a"
+  [1] =>
+  string(1) "b"
+  [2] =>
+  string(1) "c"
+}
+// 第二次循环后, $data 的值
+array(3) {
+  [0] =>
+  string(1) "b"
+  [1] =>
+  string(1) "b"
+  [2] =>
+  string(1) "c"
+}
+// 第三次循环后, $data 的值
+array(3) {
+  [0] =>
+  string(1) "b"
+  [1] =>
+  string(1) "c"
+  [2] =>
+  string(1) "c"
+}
+// 程序执行完后, $data 的值
+array(3) {
+  [0] =>
+  string(1) "b"
+  [1] =>
+  string(1) "c"
+  [2] =>
+  string(1) "c"
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -515,7 +667,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://alexzzl.github.io/2018/03/14/hello-world/">https://alexzzl.github.io/2018/03/14/hello-world/</a>
+                    <a href="https://alexzzl.github.io/2020/07/04/php-reference/">https://alexzzl.github.io/2020/07/04/php-reference/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -553,8 +705,16 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%8D%9A%E5%AE%A2/">
-                                    <span class="chip bg-color">博客</span>
+                                <a href="/tags/PHP%E5%9F%BA%E7%A1%80/">
+                                    <span class="chip bg-color">PHP基础</span>
+                                </a>
+                            
+                                <a href="/tags/PHP%E9%9D%A2%E8%AF%95/">
+                                    <span class="chip bg-color">PHP面试</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%BC%95%E7%94%A8%E5%8F%98%E9%87%8F/">
+                                    <span class="chip bg-color">引用变量</span>
                                 </a>
                             
                         </div>
@@ -726,6 +886,72 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
+                <a href="/2020/07/05/string-define/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="【PHP面试题】PHP的字符串的定义方式及各自区别（单引号，双引号，heredoc，newdoc）？">
+                        
+                        <span class="card-title">【PHP面试题】PHP的字符串的定义方式及各自区别（单引号，双引号，heredoc，newdoc）？</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            一、定义方式
+单引号/ 双引号 / heredoc 和 newdoc；（三种）
+
+1、 单引号// 单引号定义变量
+$str = 'a b c d e f $a g'; // 此时$a会被原样输出
+2、 双引号// 此处可以把 '{$a}'
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-05
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/PHP/" class="post-category">
+                                    PHP
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/PHP%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">PHP基础</span>
+                    </a>
+                    
+                    <a href="/tags/PHP%E9%9D%A2%E8%AF%95/">
+                        <span class="chip bg-color">PHP面试</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+                        <span class="chip bg-color">数据类型</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                        <span class="chip bg-color">字符串</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
                 <a href="/2020/03/14/bulit-hexo-blog/">
                     <div class="card-image">
                         
@@ -744,9 +970,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-14
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-14
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -759,52 +985,6 @@
                         </span>
                     </div>
                 </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E5%8D%9A%E5%AE%A2/">
-                        <span class="chip bg-color">博客</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2018/03/14/hello-world/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2018-03-14
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            Alex
-                            
-                        </span>
-                    </div>
-                </div>
-
                 
                 <div class="card-action article-tags">
                     

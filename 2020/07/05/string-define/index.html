@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="搭建 Hexo 博客, Alex">
+    <meta name="keywords" content="【PHP面试题】PHP的字符串的定义方式及各自区别（单引号，双引号，heredoc，newdoc）？, Alex">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>搭建 Hexo 博客 | Alex</title>
+    <title>【PHP面试题】PHP的字符串的定义方式及各自区别（单引号，双引号，heredoc，newdoc）？ | Alex</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -29,7 +29,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 <body>
@@ -308,12 +309,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">搭建 Hexo 博客</h1>
+                    <h1 class="description center-align post-title">【PHP面试题】PHP的字符串的定义方式及各自区别（单引号，双引号，heredoc，newdoc）？</h1>
                 </div>
             </div>
         </div>
@@ -428,12 +429,37 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/PHP%E5%9F%BA%E7%A1%80/">
+                                <span class="chip bg-color">PHP基础</span>
+                            </a>
+                        
+                            <a href="/tags/PHP%E9%9D%A2%E8%AF%95/">
+                                <span class="chip bg-color">PHP面试</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+                                <span class="chip bg-color">数据类型</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                                <span class="chip bg-color">字符串</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/PHP/" class="post-category">
+                                PHP
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -442,7 +468,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-14
+                    2020-07-05
                 </div>
                 
 
@@ -458,8 +484,66 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>来源<a href="https://zhuanlan.zhihu.com/p/35668237" target="_blank" rel="noopener">知乎</a><br><a href="https://godweiyang.com/2018/04/13/hexo-blog/" target="_blank" rel="noopener">原文</a></p>
-<h2 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h2><h2 id="添加国内镜像源"><a href="#添加国内镜像源" class="headerlink" title="添加国内镜像源"></a>添加国内镜像源</h2><h2 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h2><h2 id="注册-Github"><a href="#注册-Github" class="headerlink" title="注册 Github"></a>注册 Github</h2><h2 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h2><h2 id="连结-GitHub-与本地"><a href="#连结-GitHub-与本地" class="headerlink" title="连结 GitHub 与本地"></a>连结 GitHub 与本地</h2><h2 id="写文章、发布文章"><a href="#写文章、发布文章" class="headerlink" title="写文章、发布文章"></a>写文章、发布文章</h2><h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><h2 id="备份博客源文件"><a href="#备份博客源文件" class="headerlink" title="备份博客源文件"></a>备份博客源文件</h2><h2 id="个性化设置（matery主题）"><a href="#个性化设置（matery主题）" class="headerlink" title="个性化设置（matery主题）"></a>个性化设置（matery主题）</h2><script>
+                <h2 id="一、定义方式"><a href="#一、定义方式" class="headerlink" title="一、定义方式"></a>一、定义方式</h2><blockquote>
+<p>单引号/ 双引号 / heredoc 和 newdoc；（三种）</p>
+</blockquote>
+<h3 id="1、-单引号"><a href="#1、-单引号" class="headerlink" title="1、 单引号"></a>1、 单引号</h3><pre class="line-numbers language-PHP"><code class="language-PHP">// 单引号定义变量
+$str = 'a b c d e f $a g'; // 此时$a会被原样输出<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="2、-双引号"><a href="#2、-双引号" class="headerlink" title="2、 双引号"></a>2、 双引号</h3><pre class="line-numbers language-PHP"><code class="language-PHP">// 此处可以把 '{$a}' 换成特殊字符，如 & $a &
+// 原因：单引号的执行效率更高，且将name放到外面可读性更强。
+$str = "a b c d e f '{$a}' g h"; // a b c d e f $a的值 g h <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>注：双引号中包含单引号，单引号中包含变量，该变量是会被解析的，因为最外层是双引号，且里面的单引号会被原样输出.</p>
+</blockquote>
+<p><strong>使用场景</strong>：一般会用于sql语句</p>
+<blockquote>
+<p><strong>不推荐写法：</strong>$sql = “SELECT * FROM user WHERE name = ‘$name’”;<br><strong>推荐写法：</strong> $sql = ‘SELECT * FROM user WHERE name = '‘.$name.’'‘;</p>
+</blockquote>
+<h3 id="3、-heredoc"><a href="#3、-heredoc" class="headerlink" title="3、 heredoc"></a>3、 heredoc</h3><ul>
+<li>开头和结尾的名字保持一致；</li>
+<li>结尾要放到一行的开头（前面不可以有任何字符，包括空格）【适用于超长的内容】；</li>
+<li>功能与双引号一致；</li>
+</ul>
+<pre class="line-numbers language-PHP"><code class="language-PHP">$str = <<< EoT
+ . 
+ . // 内容可以为字符串，可以写变量、转义字符等，都可以被解析（功能与双引号一致）
+ .
+ .
+EoT;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="4、-newdoc"><a href="#4、-newdoc" class="headerlink" title="4、 newdoc"></a>4、 newdoc</h3><ul>
+<li>开头和结尾名字要保持一致，且定界符处用单引号括起来；</li>
+<li>结尾要放到一行的开头（前面不可以有任何字符，包括空格）【适用于超长的内容】；</li>
+<li>功能与单引号一致</li>
+</ul>
+<pre class="line-numbers language-PHP"><code class="language-PHP">// newdoc
+$str = <<<'EoT'
+ .
+ .
+ .
+ .
+EoT;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="二、区别"><a href="#二、区别" class="headerlink" title="二、区别"></a>二、区别</h2><ul>
+<li>单引号：<ul>
+<li>(1) 单引号不能解析变量；</li>
+<li>(2) 单引号不能解析转义字符，只能解析单引号和反斜杠本身；</li>
+<li>(3) 变量和变量、变量和字符串、字符串和字符串之间可以用.连接；</li>
+<li>(4) 单引号的效率更高；</li>
+</ul>
+</li>
+<li>双引号：<ul>
+<li>(1) 双引号可以解析变量，变量可以使用特殊字符和{}包含；</li>
+<li>(2) 双引号可以解析所有转义字符；</li>
+<li>(3) 也可以使用.来连接；</li>
+</ul>
+</li>
+<li>heredoc 和 newdoc:<ul>
+<li>(1) heredoc 功能类似于 双引号；</li>
+<li>(2) newdow 功能类似于 单引号；</li>
+<li>(3) 两者都是用来处理大文本。</li>
+</ul>
+</li>
+</ul>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -502,7 +586,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/03/14/da-jian-hexo-bo-ke/">http://yoursite.com/2020/03/14/da-jian-hexo-bo-ke/</a>
+                    <a href="https://alexzzl.github.io/2020/07/05/string-define/">https://alexzzl.github.io/2020/07/05/string-define/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -539,7 +623,23 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/PHP%E5%9F%BA%E7%A1%80/">
+                                    <span class="chip bg-color">PHP基础</span>
+                                </a>
+                            
+                                <a href="/tags/PHP%E9%9D%A2%E8%AF%95/">
+                                    <span class="chip bg-color">PHP面试</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+                                    <span class="chip bg-color">数据类型</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                                    <span class="chip bg-color">字符串</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -709,7 +809,92 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/07/04/php-yin-yong-bian-liang-fen-xi/">
+                <a href="/2020/07/05/php-data-types/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="PHP 常量及数据类型">
+                        
+                        <span class="card-title">PHP 常量及数据类型</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            数据类型三大数据类型（标量，复合，特殊）
+
+标量：
+字符串
+整型
+浮点型
+布尔型
+NULL
+
+
+复合：
+数组
+对象
+
+
+特殊：
+资源
+
+
+
+浮点类型不能用于精确的相等的判断
+$a = 0.1;
+$b = 0.7;
+
+if ($a+$b ==
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-05
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/PHP/" class="post-category">
+                                    PHP
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/PHP%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">PHP基础</span>
+                    </a>
+                    
+                    <a href="/tags/PHP%E9%9D%A2%E8%AF%95/">
+                        <span class="chip bg-color">PHP面试</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+                        <span class="chip bg-color">数据类型</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%B8%B8%E9%87%8F/">
+                        <span class="chip bg-color">常量</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/07/04/php-reference/">
                     <div class="card-image">
                         
                         
@@ -723,60 +908,47 @@
                         
                             一. PHP引用变量考察点1. PHP的引用变量的概念及定义方式概念
 
-在PHP中，引用意味着用不同的名字访问同一个变量内容。定义方式使用 &amp; 符号
+在PHP中，引用意味着用不同的名字访问同一个变量内容。
+
+定义方式
+
+使用 &amp; 符号
 
 2. 延伸：PHP引用变量的原理1）赋值
-将一个变量的值赋值给另一个变量，其中一
+将一个变量的值赋值给另一个变量
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-04
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-04
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Alex
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/PHP/" class="post-category">
+                                    PHP
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
                 
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2018/03/14/hello-world/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2018-03-14
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            Alex
-                            
-                        </span>
-                    </div>
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/PHP%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">PHP基础</span>
+                    </a>
+                    
+                    <a href="/tags/PHP%E9%9D%A2%E8%AF%95/">
+                        <span class="chip bg-color">PHP面试</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%BC%95%E7%94%A8%E5%8F%98%E9%87%8F/">
+                        <span class="chip bg-color">引用变量</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -937,15 +1109,6 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
     }
 
     
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
-        left: -66px !important;
-    }
-
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
-        left: 0px !important;
-    }
-
-    
 </style>
 <div class="">
     
@@ -953,7 +1116,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
         <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
                    server="netease"
                    type="playlist"
-                   id="503838841"
+                   id="88630015"
                    fixed='true'
                    autoplay='false'
                    theme='#42b983'
@@ -1002,13 +1165,13 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <a href="https://github.com/Alexzzl" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
     </a>
 
 
 
-    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <a href="mailto:805119233@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
     </a>
 
@@ -1018,7 +1181,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 
 
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=805119233" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 805119233" data-position="top" data-delay="50">
         <i class="fab fa-qq"></i>
     </a>
 
@@ -1027,10 +1190,6 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 
 
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
 
 </div>
     </div>
