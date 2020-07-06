@@ -14,12 +14,17 @@ tags:
 categories: PHP
 ---
 ## 一. 流程控制考点
+
 ### 1. PHP的遍历数组的三种方式及各自区别
+
 #### 1） 遍历数组的方式
+
 - 使用 for循环；
 - 使用 foreach循环；
 - 使用 while、list()、each()组合循环；
+
 #### 2） 区别
+
 - for循环：只能遍历索引数组；
 - foreach循环：可以遍历索引和关联数组；
 - 联合使用list()、each() 和 while循环：可以遍历索引和关联数组；
@@ -27,11 +32,14 @@ categories: PHP
 - foreach遍历会对数组进行reset()操作。
 
 ### 2. 延伸：分支结构
+
 #### 1） if …elseif：
+
 - 在 elseif语句中 只能有一个表达式为 true，即 在 elseif语句中 只能有一个语句块被执行，多个 elseif从句是排斥关系；
 - 使用 elseif语句 有一个基本原则： 总是把优先范围小的条件放在前面处理。【即把可能性大的放到前面
 
 #### 2） switch…case…：
+
 - 和if不同的是，switch后面的控制表达式的数据类型只能是整型、浮点型或者字符串；
 - continue语句 作用到switch的作用类似于break；
 - 跳出switch外的循环，可以使用 continue2；
