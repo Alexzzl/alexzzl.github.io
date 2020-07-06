@@ -59,7 +59,6 @@ for() {
         	break;
         default: ...:
         	break;
-        
 	}
 }
 ```
