@@ -67,5 +67,68 @@ categories:
 ```PHP
 $str = '<b>abc</b>';
 $pattern = '/<b>(.*)<\/b>/'; // 正则表达式
-preg_replace($pattern, '\\1', $str); // 两个反斜线是为了防止将 \1 转义掉；\1表示匹配第一个括号中的内容；
+echo preg_replace($pattern, '\\1', $str); 
+ // 两个反斜线是为了防止将 \1 转义掉；
+ // \1表示匹配第一个括号中的内容；
+```
+
+####  4） 贪婪模式
+```PHP
+$str = '<b>abc</b><b>bcd</b>'; 
+$pattern = '/<b>(.*)<\/b>/'; // 贪婪模式
+echo preg_replace($pattern, '\\1', $str);  // abc</b><b>bcd
+```
+取消 贪婪模式 的方法：
+① 使用 . * ? 取消贪婪模式
+```PHP
+$str = '<b>abc</b><b>bcd</b>'; 
+// 匹配每一个<b>标签中的内容
+$pattern = '/<b>(.*?)<\/b>/'; // 匹配到了abc和bcd（从<b>开始，匹配到了abc，遇到</b>结束；再次遇到<b>开始，匹配到了bcd，遇到</b>结束）
+echo preg_replace($pattern, '\\1'."\n", $str); 
+// abc
+// bcd
+```
+② 使用 . * 后面加 U 取消贪婪模式
+```PHP
+$str = '<b>abc</b><b>bcd</b>';
+$pattern = '/<b>(.*)<\/b>/U';
+echo preg_replace($pattern, '\\1'."\n", $str); 
+// abc
+// bcd
+```
+两种方法不能同时使用
+
+#### 5） 正在表达式PCRE函数
+<table><tbody><tr><th>函数</th><th>描述</th></tr>
+<tr><td>
+<a href="https://www.runoob.com/php/php-preg_filter.html" target="_blank">preg_filter</a> </td><td> 执行一个正则表达式搜索和替换</td></tr><tr><td>
+<a href="https://www.runoob.com/php/php-preg_grep.html" target="_blank">preg_grep</a> </td><td> 返回匹配模式的数组条目</td></tr><tr><td>
+<a href="https://www.runoob.com/php/php-preg_last_error.html" target="_blank">preg_last_error</a> </td><td> 返回最后一个PCRE正则执行产生的错误代码</td></tr><tr><td>
+<a href="https://www.runoob.com/php/php-preg_match_all.html" target="_blank">preg_match_all</a> </td><td> 执行一个全局正则表达式匹配</td></tr><tr><td>
+<a href="https://www.runoob.com/php/php-preg_match.html" target="_blank">preg_match</a> </td><td> 执行一个正则表达式匹配</td></tr><tr><td>
+<a href="https://www.runoob.com/php/php-preg_quote.html" target="_blank">preg_quote</a> </td><td> 转义正则表达式字符</td></tr><tr><td>
+<a href="https://www.runoob.com/php/php-preg_replace_callback_array.html" target="_blank">preg_replace_callback_array</a> </td><td> 执行一个正则表达式搜索并且使用一个回调进行替换</td></tr><tr><td>
+<a href="https://www.runoob.com/php/php-preg_replace_callback.html" target="_blank">preg_replace_callback</a> </td><td> 执行一个正则表达式搜索并且使用一个回调进行替换</td></tr><tr><td>
+<a href="https://www.runoob.com/php/php-preg_replace.html" target="_blank">preg_replace</a> </td><td> 执行一个正则表达式的搜索和替换</td></tr><tr><td>
+<a href="https://www.runoob.com/php/php-preg_split.html" target="_blank">preg_split</a> </td><td> 通过一个正则表达式分隔字符串</td></tr></tbody></table>
+
+#### 6） 中文匹配
+
+① UTF-8汉字编码范围是：0x4e00-0x9fa5； UTF-8要使用 u模式修正符 使模式字符串被当成 UTF-8。
+
+```PHP
+// 该中文为UTF-8下的中文
+$str = '中文'; 
+// UTF-8进行匹配
+$pattern = '/[\x{4e00}-\x{9fa5}]+/u'; // 匹配一次或多次，不区分大小写
+preg_match($pattern, $str, $match);
+var_dump($match);
+```
+② 在ANSI(gb2312)环境下， 0xb0-0xf7, 0xa1-0xfe；在ANSI(gb2312)环境下，要使用chr将ASCII码转换为字符
+
+```PHP
+$str = '中文';
+$pattern = '/['.chr(0xb0).'-'.chr(0xf7).']['.chr(0xa1).'-'.chr(0xfe).']/';
+preg_match($pattern, $str, $match);
+var_dump($match);
 ```
