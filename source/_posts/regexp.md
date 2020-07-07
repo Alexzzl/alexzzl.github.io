@@ -65,8 +65,8 @@ categories:
 ####  3） 后向引用：将前面匹配到的放到后面
 
 ```PHP
-$str = '<b>abc</b>';
-$pattern = '/<b>(.*)<\/b>/'; // 正则表达式
+$str = '&#60b&#62abc&#60/b&#62';
+$pattern = '/&#60b&#62(.*)&#60\/b&#62/'; // 正则表达式
 echo preg_replace($pattern, '\\1', $str); 
  // 两个反斜线是为了防止将 \1 转义掉；
  // \1表示匹配第一个括号中的内容；
@@ -74,28 +74,31 @@ echo preg_replace($pattern, '\\1', $str);
 
 ####  4） 贪婪模式
 ```PHP
-$str = '<b>abc</b><b>bcd</b>'; 
-$pattern = '/<b>(.*)<\/b>/'; // 贪婪模式
-echo preg_replace($pattern, '\\1', $str);  // abc</b><b>bcd
+$str = '&#60b&#62abc&#60/b&#62&#60b&#62bcd&#60/b&#62'; 
+$pattern = '/&#60b&#62(.*)&#60\/b&#62/'; // 贪婪模式
+echo preg_replace($pattern, '\\1', $str);  // abc&#60/b&#62&#60b&#62bcd
 ```
 取消 贪婪模式 的方法：
 ① 使用 . * ? 取消贪婪模式
 ```PHP
-$str = '<b>abc</b><b>bcd</b>'; 
-// 匹配每一个<b>标签中的内容
-$pattern = '/<b>(.*?)<\/b>/'; // 匹配到了abc和bcd（从<b>开始，匹配到了abc，遇到</b>结束；再次遇到<b>开始，匹配到了bcd，遇到</b>结束）
+$str = '&#60b&#62abc&#60/b&#62&#60b&#62bcd&#60/b&#62'; 
+// 匹配每一个&#60b&#62标签中的内容
+$pattern = '/&#60b&#62(.*?)&#60\/b&#62/'; // 匹配到了abc和bcd（从[b]开始，匹配到了abc，遇到[/b]结束；再次遇到[b]开始，匹配到了bcd，遇到[/b]结束）
 echo preg_replace($pattern, '\\1'."\n", $str); 
 // abc
 // bcd
 ```
 ② 使用 . * 后面加 U 取消贪婪模式
+
 ```PHP
-$str = '<b>abc</b><b>bcd</b>';
-$pattern = '/<b>(.*)<\/b>/U';
+$str = '&#60b&#62abc&#60/b&#62&#60b&#62bcd&#60/b&#62';
+$pattern = '/&#60b&#62(.*)&#60\/b&#62/U';
 echo preg_replace($pattern, '\\1'."\n", $str); 
 // abc
 // bcd
+
 ```
+
 两种方法不能同时使用
 
 #### 5） 正在表达式PCRE函数
@@ -123,6 +126,11 @@ $str = '中文';
 $pattern = '/[\x{4e00}-\x{9fa5}]+/u'; // 匹配一次或多次，不区分大小写
 preg_match($pattern, $str, $match);
 var_dump($match);
+/* array(1) {
+  [0]=>
+  string(6) "中文"
+}
+*/
 ```
 ② 在ANSI(gb2312)环境下， 0xb0-0xf7, 0xa1-0xfe；在ANSI(gb2312)环境下，要使用chr将ASCII码转换为字符
 
@@ -131,4 +139,43 @@ $str = '中文';
 $pattern = '/['.chr(0xb0).'-'.chr(0xf7).']['.chr(0xa1).'-'.chr(0xfe).']/';
 preg_match($pattern, $str, $match);
 var_dump($match);
+```
+## 二、解题方法
+
+> 1） 先写出一个要匹配的字符串；
+2） 自左向右的顺序使用正则表达式的原子核元字符进行拼接；
+3） 最终加入模式修正符；
+4） 不可死记硬背模式；
+5） 练习常见正则表达式（URL、Email、IP地址、手机号码等）。
+
+## 三、真题
+### 1. 至少写出一种验证 139手机号码的正则表达式。
+```PHP
+$str = '13988888888';
+$pattern = '/^139\d{8}$/';
+preg_match($pattern, $str, $match);
+var_dump($match);
+/*
+array(1) {
+  [0]=>
+  string(11) "13988888888"
+}
+*/
+```
+
+### 2. 请写出一个正则表达式，取出页面中所有 img标签 中的 src值。
+
+```PHP
+$str = '&#60img alt="狗狗" id="dog" src="dog.jpg" /&#62';
+$pattern = '/&#60img.*?src="(.*?)".*?\/?&#62/i';
+preg_match($pattern, $str, $match);
+var_dump($match);
+/*
+array(2) {
+  [0]=>
+  string(43) "&#60img alt="狗狗" id="dog" src="dog.jpg" /&#62"
+  [1]=>
+  string(7) "dog.jpg"
+}
+*/
 ```
