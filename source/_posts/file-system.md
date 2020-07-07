@@ -8,7 +8,10 @@ date: 2020-07-08 00:28:06
 password:
 summary:
 tags:
-categories:
+    - PHP面试
+    - PHP基础
+    - 文件
+categories: PHP
 ---
 ## 一、考点
 ### 1、文件读取/写入操作
