@@ -7,8 +7,13 @@ mathjax: true
 date: 2020-07-08 11:29:32
 password:
 summary:
-tags:
-categories:
+tags: 
+    - PHP基础
+    - PHP面试
+    - Session
+    - Cookie
+    - 会话控制
+categories: PHP
 ---
 ## 一、考点
 ### 1、PHP的会话控制技术
