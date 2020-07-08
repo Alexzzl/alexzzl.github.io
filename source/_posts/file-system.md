@@ -15,6 +15,7 @@ categories: PHP
 ---
 ## 一、考点
 ### 1、文件读取/写入操作
+[文件系统相关函数](https://www.php.net/manual/zh/book.filesystem.php)
 #### 1） 文件打开
 > fopen()函数：用来打开一个文件，打开时需要指定打开模式
 
@@ -33,13 +34,13 @@ t : 可以透明的将 \t 转化成 \r、\n
 ```
 #### 2） 写入函数
 ```PHP
-fwrite();
-fputs();
+[fwrite();](https://www.php.net/manual/zh/function.fwrite.php)
+fputs(); // fwrite() 的别名
 ```
 
 #### 3） 读取函数
 ```PHP
-fread();
+[fread();](https://www.php.net/manual/zh/function.fread.php)
 fgets(); // 获取一行
 fgetc(); // 获取一个字符
 ```
