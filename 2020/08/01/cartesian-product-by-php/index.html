@@ -486,16 +486,7 @@
 <p>类似的例子有，如果A表示某学校学生的集合，B表示该学校所有课程的集合，则A与B的笛卡尔积表示所有可能的选课情况。A表示所有声母的集合，B表示所有韵母的集合，那么A和B的笛卡尔积就为所有可能的汉字全拼。</p>
 <p>设A,B为集合，用A中元素为第一元素，B中元素为第二元素构成有序对，所有这样的有序对组成的集合叫做A与B的笛卡尔积，记作AxB.<br>笛卡尔积的符号化为：</p>
 <blockquote>
-<p>A×B={(x,y)|x∈A∧y∈B}</p>
-</blockquote>
-<blockquote>
-<p>例如，A={a,b}, B={0,1,2}，则</p>
-</blockquote>
-<blockquote>
-<p>A×B={(a, 0), (a, 1), (a, 2), (b, 0), (b, 1), (b, 2)}</p>
-</blockquote>
-<blockquote>
-<p>B×A={(0, a), (0, b), (1, a), (1, b), (2, a), (2, b)}</p>
+<p>A×B={(x,y)|x∈A∧y∈B}<br>例如，A={a,b}, B={0,1,2}，则<br>A×B={(a, 0), (a, 1), (a, 2), (b, 0), (b, 1), (b, 2)}<br>B×A={(0, a), (0, b), (1, a), (1, b), (2, a), (2, b)}</p>
 </blockquote>
 <h2 id="第二-、运算"><a href="#第二-、运算" class="headerlink" title="第二 、运算"></a>第二 、运算</h2><ol>
 <li><p>对任意集合A，根据定义有</p>
@@ -515,19 +506,10 @@
 </li>
 <li><p>笛卡尔积运算对并和交运算满足分配律，即</p>
 <blockquote>
-<p>Ax(B∪C)=(AxB)∪(AxC)</p>
+<p>Ax(B∪C)=(AxB)∪(AxC)<br>(B∪C)xA=(BxA)∪(CxA)<br>Ax(B∩C)=(AxB)∩(AxC)<br>(B∩C)xA=(BxA)∩(CxA)</p>
 </blockquote>
 </li>
 </ol>
-<blockquote>
-<p>(B∪C)xA=(BxA)∪(CxA)</p>
-</blockquote>
-<blockquote>
-<p>Ax(B∩C)=(AxB)∩(AxC)</p>
-</blockquote>
-<blockquote>
-<p>(B∩C)xA=(BxA)∩(CxA)</p>
-</blockquote>
 <h2 id="第三-、程序算法"><a href="#第三-、程序算法" class="headerlink" title="第三 、程序算法"></a>第三 、程序算法</h2><pre class="line-numbers language-PHP"><code class="language-PHP"><?php
 
 class Cartesian {
