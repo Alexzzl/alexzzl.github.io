@@ -61,7 +61,7 @@ FLOAT、DOUBLE、DECIMAL
 
 > - 尽量使用 TIMESTAMP，比 DATETIME 空间效率高；
 > - 用整数保存时间戳的格式通常不方便处理；
-> - 如果需要存储微妙，可以使用 bigint 存储。
+> - 如果需要存储微秒，可以使用 bigint 存储。
 
 ⑥ 列属性
 ```
