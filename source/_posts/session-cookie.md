@@ -44,7 +44,7 @@ categories: PHP
 即存储在客户端中的文件，就是会员卡，这张会员卡中存储着用户的基本信息，这些基本信息就是用户的状态信息。（如：我们做登录，就可以把登录的状态保存在 cookie的文件里）
 
 **Cookie 的操作**
-```PHP
+```php
 /* 
  * 写操作
  * $name 	键名
@@ -88,7 +88,7 @@ setcookie($name, '', time()-1000); // 此处减去多少都可以，只要保证
 
 - **Session 的操作**
 
-```PHP
+```php
 // 开启 session
 session_start();
 
@@ -187,6 +187,6 @@ SID 的特性：
 ### Session信息的存储方式，如何进行遍历？
 存储方式：默认情况下存储到服务器的文件中，还可以通过 session_set_save_handler()存储到Mysql/Memcache/redis
 遍历方式:
-```PHP
+```php
 $_SESSION;
 ```

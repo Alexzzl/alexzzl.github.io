@@ -32,7 +32,7 @@ categories: PHP
 
 不能用于精确的相等的判断
 
-```PHP
+```php
 $a = 0.1;
 $b = 0.7;
 
@@ -45,14 +45,14 @@ echo 'no'; // 答案为 no
 
 ### 布尔类型
 
-```PHP
+```php
 // false 的7种情况
 0, 0.0, '', '0', false, [], null
 ```
 
 ### 数组类型
 
-```PHP
+```php
 // 超全局数据
 $GLOBALS, $_GET, $_POST, $_REQUEST, $_SESSION, $_COOKIE, $_SERVER, $_FILES, $_ENV
 // 注意点：$GLOBALS 包含了后面的所有，$_REQUEST包含了$_GET, $_POST和$_COOKIE,尽量少用$_REQUEST,安全性低.
@@ -74,7 +74,7 @@ echo $_SERVER['PATH_INFO']; // ...index.php/use/reg?status=1   use/reg
 定义const和define， const更快是语言结构，define是函数,define不能定义类的常量，const可以。常量一经定义就不能修改和删除
 
 ### 预定义常量
-```PHP
+```php
 __FILE__ // 文件的路径名和文件的名称
 __LINE__ // 所在行行号
 __DIR__ // 所在目录

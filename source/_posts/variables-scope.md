@@ -19,7 +19,7 @@ categories: PHP
 
 任何用于函数内部的变量按缺省情况将被限制在局部函数范围内。
 
-```PHP
+```php
 
 $a = 1; /* global scope 全局 */
 
@@ -35,7 +35,7 @@ Test(); // Notice: Undefined variable: a
 ### 1. global关键字：
 PHP 中全局变量在函数中使用时必须声明为 global。
 
-```PHP
+```php
 // global关键字
 $outer = 'str'; // 全局变量
 function mgfunc()
@@ -46,7 +46,7 @@ function mgfunc()
 mgfunc() // str
 ```
 ### 2. $GLOBALS 及 其他超全局数组：
-```PHP
+```php
 // $GLOBALS
 $outer = 'str';
 function mgfunc()
@@ -67,7 +67,7 @@ mgfunc() // str
 1. 可以记录函数的调用次数，从而可以在某些条件下终止递归。
 
 代码实现：
-```PHP
+```php
 function mgFunc()
 {
     static $a = 1;
@@ -80,7 +80,7 @@ myFunc(); // 3
 
 ## 三、真题
 写出如下程序的输出结果：
-```PHP
+```php
 $count = 5;
 function  get_count()
 {
@@ -96,7 +96,7 @@ echo get_count(); // null++ = 1
 ### 1） 函数的参数及参数的引用传递
 默认情况下，函数参数通过值传递。如果希望允许函数修改它的值，必须通过引用传递参数(`&`)
 
-```PHP
+```php
 $a = 1;
 function myFun(&$a) 
 {
@@ -116,7 +116,7 @@ echo $a; // 2
 ### 3）函数的引用返回
 从函数返回一个引用，必须在函数声明和指派返回值给一个变量时都使用引用运算符 &
 
-```PHP
+```php
 function &myFunc()
 {
     static $b = 10;
@@ -185,7 +185,7 @@ sprintf():根据格式转换字符串，并返回
 对单一的已序列化的变量进行操作，将其转换回 PHP 的值。
 
 
-```PHP
+```php
 $a = array('a' => 'Apple' ,'b' => 'banana' , 'c' => 'Coconut');   
  
 //序列化数组   
@@ -202,7 +202,7 @@ print_r($o);
 ```
 
 json_encode 和 json_decode
-```PHP
+```php
 $a = array('a' => 'Apple' ,'b' => 'banana' , 'c' => 'Coconut');
 //序列化数组
 $s = json_encode($a);

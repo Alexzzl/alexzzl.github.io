@@ -41,7 +41,7 @@ categories: PHP
 - == 比较值是否相等； === 比较值是否相等，类型是否相同。
 - 等值判断（FALSE的七种情况）
 
-```PHP
+```php
 var_dump(''== false);// bool(true)
 var_dump('0' == 0);// bool(true)
 var_dump(0.0 == 0);// bool(true)
@@ -71,14 +71,14 @@ FALSE的七种情况都满足:
 #### 4） 逻辑运算符
 1. 短路作用
 
-```PHP
+```php
 var_dump($a = true || $b == 3); // bool(true) 前面是 true，后面不会执行【|| : 一真为真】
 var_dump($b = false && $a == 1);// bool(false) 前面是 false，后面不会执行【&&：一假为假】
 ```
 
 2. `||` 和 `&&` 与 `or` 和 `and` 的优先级不同
 
-```PHP
+```php
 $a = false || true; // 先执行 false || true，得到 true,再赋值给 $a
 var_dump($a); // bool(true)
 $b = false or true;// 先执行 $b = false，整体为 true，则 $b的值为 false
@@ -90,7 +90,7 @@ var_dump($b);// bool(false)
 
 ## 三. 真题
 **下列程序中，请写出打印输出的结果：**
-```PHP
+```php
 $a = 0;
 $b = 0;
 
@@ -120,7 +120,7 @@ if ($a = 3 > 0 || $b = 3 > 0) {
 	$a++; // $a = true; true++; => true  => 1
 	$b++; // $b = 0; 0++; => 1
 ```
-```PHP
+```php
 $a = 0;
 $b = 0;
 
@@ -137,7 +137,7 @@ if ($a = 3 > 0 || $b = 3 > 0) {
 ```
 
 **运算结果：**
-```PHP
+```php
 $a = true;
 $b = 1;
 ```

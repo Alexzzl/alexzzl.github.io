@@ -11,6 +11,9 @@ tags:
     - PHP面试
 categories:
 ---
+[PHP面试准备的资料](https://xianyunyh.gitbooks.io/php-interview/content/)
+
+
 [细说浏览器输入URL后发生了什么](https://segmentfault.com/a/1190000012092552)
 
 [简述 cookie 和 session的区别及各自的工作机制，存储位置等，简述 cookie 的优缺点。](https://alexzzl.github.io/2020/07/08/session-cookie/)
@@ -18,8 +21,7 @@ categories:
 [php session 数据保存在哪里?](https://www.cnblogs.com/eoiioe/archive/2008/11/30/1344283.html)
 
 Session 文件什么样的
-```PHP
-<?php
+```php
 session_start();
 
 $_SESSION['view'] = 1;
@@ -55,7 +57,7 @@ zhaoli_zhang@baidu.com
 ```
 
 [PHP str_replace() 函数](https://www.w3school.com.cn/php/func_string_str_replace.asp)
-```PHP
+```php
 echo str_replace('world', 'Shangehai', 'Hello world!');
 ```
 
@@ -64,7 +66,7 @@ echo str_replace('world', 'Shangehai', 'Hello world!');
 [PHP 字符串替换 substr_replace 与 str_replace 函数](https://www.cnblogs.com/mfryf/p/5013937.html)
 
 [explode — 使用一个字符串分割另一个字符串](https://www.php.net/manual/zh/function.explode.php)
-```PHP
+```php
 explode ( string $delimiter , string $string , int $limit = ? ) : array
 
 
@@ -128,11 +130,24 @@ var_dump(implode('hello', array())); // string(0) ""
 
 [MySQL的事务和锁](https://juejin.cn/post/6917477406483677191)
 
-
 [内存泄漏和内存溢出有啥区别？](https://www.zhihu.com/question/40560123)
 
 [10.swoole基础-常驻内存以及如何避免内存泄漏](https://www.cnblogs.com/JsonM/articles/7325018.html)
 
-[RPC 框架]()
+[websocket](https://www.ruanyifeng.com/blog/2017/05/websocket.html)
 
-[微服务]()
+[Socket网络编程入门](http://blog.leanote.com/post/weibo-007/Socket%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8)
+
+[MySQL 主从复制](https://github.com/doocs/advanced-java/blob/main/docs/high-concurrency/mysql-read-write-separation.md)
+
+[Redis 和 Memcached 有什么区别？](https://github.com/doocs/advanced-java/blob/main/docs/high-concurrency/redis-single-thread-model.md)
+
+[PHP The Right Way PHP之道](https://phptherightway.com/)
+除了编码规范之外的各种 PHP 的最佳实践，还包括一些设计模式，安全问题，以及服务部署，Docker 虚拟化以及各种资源。
+
+[PHP FIG](http://www.php-fig.org/psr/)，PHP 编码规范及标准推荐。
+[PHP PSR 标准规范](https://learnku.com/docs/psr)
+
+[Clean Code PHP](https://github.com/jupeter/clean-code-php)，《代码整洁之道》的 PHP 实践。
+
+[TCP的那些事儿](https://coolshell.cn/?s=TCP%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF)
