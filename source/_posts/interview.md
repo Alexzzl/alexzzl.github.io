@@ -127,6 +127,21 @@ var_dump(implode('hello', array())); // string(0) ""
 
 [php-fpm进程模型](https://www.easyswoole.com/Video/Basic/php-fpmProcessModel.html)
 
+[深入 Composer autoload](https://learnku.com/php/t/1002/deep-composer-autoload)
+
+[book note](https://www.kancloud.cn/jdxia/booknote/527018)
+
+[php-fpm进程模型](https://www.easyswoole.com/Video/Basic/php-fpmProcessModel.html)
+
+[PSR-4与PSR-0的区别](https://blog.csdn.net/soonfly/article/details/53008891)
+
+[PHP PSR 标准规范](https://learnku.com/docs/psr)
+
+[Elasticsearch-PHP 中文文档](https://learnku.com/docs/elasticsearch-php/6.0)
+
+[PHP 内核与原生扩展开发 php7](https://learnku.com/docs/php-internals/php7)
+
+[Mysql 中 MyISAM 和 InnoDB 的区别有哪些？](https://www.zhihu.com/question/20596402)
 
 [MySQL的事务和锁](https://juejin.cn/post/6917477406483677191)
 
