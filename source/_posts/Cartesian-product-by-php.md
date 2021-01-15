@@ -47,7 +47,7 @@ categories: 数组
 > (B∩C)xA=(BxA)∩(CxA)
 
 ## 第三 、程序算法
-```PHP
+```php
 <?php
 
 class Cartesian {

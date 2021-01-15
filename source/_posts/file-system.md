@@ -33,28 +33,28 @@ b : 打开一个二进制文件
 t : 可以透明的将 \t 转化成 \r、\n
 ```
 #### 2） 写入函数
-```PHP
+```php
 [fwrite();](https://www.php.net/manual/zh/function.fwrite.php)
 fputs(); // fwrite() 的别名
 ```
 
 #### 3） 读取函数
-```PHP
+```php
 [fread();](https://www.php.net/manual/zh/function.fread.php)
 fgets(); // 获取一行
 fgetc(); // 获取一个字符
 ```
 #### 4） 关闭函数
-```PHP
+```php
 fclose();
 ```
 #### 5） 不需要 fopen() 打开的函数
-```PHP
+```php
 file_get_contents(); 
 file_put_contents();
 ```
 #### 6） 其他读取函数
-```PHP
+```php
 file(); // 将整个一个文件读取到一个数组中
 readfile(); // 将文件读取出来，并输出到缓冲区
 ```
@@ -68,7 +68,7 @@ readfile(); // 将文件读取出来，并输出到缓冲区
 ```
 ### 2、延伸：目录操作函数、其他文件操作
 #### 1）目录操作函数
-```PHP
+```php
 // 名称相关
 basename();
 dirname();
@@ -88,7 +88,7 @@ rmdir();
 mkdir();
 ```
 #### 2） 其他函数
-```PHP
+```php
 // 文件大小
 filesize();
 
@@ -145,7 +145,7 @@ This is My Test Content!!!
 ```
 #### 2） 创建一个 test.php 文件，并写入如下内容：
 
-```PHP
+```php
 // 打开文件
 $file = './hello.txt';
 $handle = fopen($file, 'r'); // 用 r+ 会把后面的内容覆盖掉
@@ -168,7 +168,7 @@ Hello WorldThis is My Test Content!!!
 ### 2、通过PHP函数的方式对目录进行遍历，写出程序。
 #### 1） 创建目录 test,及在其目录下创建1、2、3文件；
 #### 2） 在 test目录的同级新建一个文件夹 example.php用来遍历目录，如下：
-```PHP
+```php
 
 // 打开目录
 // 读取目录当中的文件

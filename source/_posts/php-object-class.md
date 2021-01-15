@@ -54,7 +54,7 @@ categories: PHP
 > - 单一继承的特性（只能同时继承一个父类，如果有接口的话，可以继承一个父类，一个接口）；
 > - 方法重写（在父类中定义一个方法，子类去继承父类的时候，如果方法名相同，父类的方法会被子类覆盖掉，如果不想被覆盖，可以进行延伸，加一个 parent::方法名()）；
 
-```PHP
+```php
 class Father
 {
     public function test()
@@ -76,7 +76,7 @@ class Son extends Father
 - 抽象类的定义
 > 在类的前面加 abstract；
 
-```PHP
+```php
 abstract class 类名
 {
     
@@ -88,7 +88,7 @@ abstract class 类名
 > - 接口中的方法都为 抽象方法；
 > - 用 interface 接口名 来定义；
 
-```PHP
+```php
 interface 接口名
 {
     public function 方法名([参数]);
@@ -97,7 +97,7 @@ interface 接口名
 > 没有方法体，直接用 {} 即可（即定义好该方法，等着后代去实现）。
 
 #### 2） 魔术方法
-```PHP
+```php
 __construct(); // 构造方法：在每次创建对象（即实例化对象的时候自动调用）
 __destruct();  // 析构方法：在每次销毁的时候自动调用
 __call();	   // 在对象中调用一个不可访问方法时，会被调用
@@ -127,7 +127,7 @@ __clone();     // 当赋值完成时，如果定义了__clone()方法，则新�
 
 ## 三、真题
 ### 请写出PHP的构造函数和析构函数
-```PHP
+```php
 __construct(); // 构造函数
 __destruct(); // 析构方法
 ```

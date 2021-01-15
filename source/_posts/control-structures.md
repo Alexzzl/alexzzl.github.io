@@ -48,7 +48,7 @@ categories: PHP
 
 代码执行：
 
-```PHP
+```php
 for() {
     switch($var) {
         case...:
