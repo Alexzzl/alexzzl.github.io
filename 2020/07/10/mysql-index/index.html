@@ -551,8 +551,8 @@ where name = 100； // 写成这样的形式，可以搜索到，但是没有用
 where name = "100"; // 此时才用到了索引【一定要给值加引号】</code></pre><h2 id="二、解题方法"><a href="#二、解题方法" class="headerlink" title="二、解题方法"></a>二、解题方法</h2><blockquote>
 <p>在一些 MySQL索引 基础考题中，我们可以轻松的通过索引基础和类型来解决此类问题，对于一些索引创建注意事项方面的考点，我们可以通过索引创建原则和注意事项来解决。</p>
 </blockquote>
-<h2 id="三、真题"><a href="#三、真题" class="headerlink" title="三、真题"></a>三、真题</h2><h3 id="创建-MySQL复合索引（组合索引）-应该注意哪些事项？"><a href="#创建-MySQL复合索引（组合索引）-应该注意哪些事项？" class="headerlink" title="创建 MySQL复合索引（组合索引） 应该注意哪些事项？"></a>创建 MySQL复合索引（组合索引） 应该注意哪些事项？</h3><p>遵循前缀原则:</p>
-<ul>
+<h2 id="三、真题"><a href="#三、真题" class="headerlink" title="三、真题"></a>三、真题</h2><h3 id="创建-MySQL复合索引（组合索引）-应该注意哪些事项？"><a href="#创建-MySQL复合索引（组合索引）-应该注意哪些事项？" class="headerlink" title="创建 MySQL复合索引（组合索引） 应该注意哪些事项？"></a>创建 MySQL复合索引（组合索引） 应该注意哪些事项？</h3><ul>
+<li>遵循前缀原则</li>
 <li>看查询条件（如果查询条件中是 WHERE a=1 AND b=2 我们可以创建一个 KEY(a,b) 这样的复合索引 ，如果搜索 WHERE a=1 时，该索引也可以被使用到）。</li>
 </ul>
 <script>

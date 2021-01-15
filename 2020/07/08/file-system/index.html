@@ -494,118 +494,118 @@ a+ : 读写方式，即读写的追加，将文件指针指向文件末尾【如
 x : 在创建的时候，以写入的方式进行打开，并且会将文件的指针指向文件的开头【如果文件已经存在，会报一个 warning的错误，并且 fopen 返回一个 false；如果文件不存在，才会去创建】
 x+ : 创建并以读写的方式打开
 b : 打开一个二进制文件
-t : 可以透明的将 \t 转化成 \r、\n</code></pre><h4 id="2）-写入函数"><a href="#2）-写入函数" class="headerlink" title="2） 写入函数"></a>2） 写入函数</h4><pre class="line-numbers language-PHP"><code class="language-PHP">[fwrite();](https://www.php.net/manual/zh/function.fwrite.php)
-fputs(); // fwrite() 的别名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h4 id="3）-读取函数"><a href="#3）-读取函数" class="headerlink" title="3） 读取函数"></a>3） 读取函数</h4><pre class="line-numbers language-PHP"><code class="language-PHP">[fread();](https://www.php.net/manual/zh/function.fread.php)
-fgets(); // 获取一行
-fgetc(); // 获取一个字符<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h4 id="4）-关闭函数"><a href="#4）-关闭函数" class="headerlink" title="4） 关闭函数"></a>4） 关闭函数</h4><pre class="line-numbers language-PHP"><code class="language-PHP">fclose();<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="5）-不需要-fopen-打开的函数"><a href="#5）-不需要-fopen-打开的函数" class="headerlink" title="5） 不需要 fopen() 打开的函数"></a>5） 不需要 fopen() 打开的函数</h4><pre class="line-numbers language-PHP"><code class="language-PHP">file_get_contents(); 
-file_put_contents();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h4 id="6）-其他读取函数"><a href="#6）-其他读取函数" class="headerlink" title="6） 其他读取函数"></a>6） 其他读取函数</h4><pre class="line-numbers language-PHP"><code class="language-PHP">file(); // 将整个一个文件读取到一个数组中
-readfile(); // 将文件读取出来，并输出到缓冲区<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+t : 可以透明的将 \t 转化成 \r、\n</code></pre><h4 id="2）-写入函数"><a href="#2）-写入函数" class="headerlink" title="2） 写入函数"></a>2） 写入函数</h4><pre class="line-numbers language-php"><code class="language-php"><span class="token punctuation">[</span><span class="token function">fwrite</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">]</span><span class="token punctuation">(</span>https<span class="token punctuation">:</span><span class="token comment" spellcheck="true">//www.php.net/manual/zh/function.fwrite.php)</span>
+<span class="token function">fputs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// fwrite() 的别名</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="3）-读取函数"><a href="#3）-读取函数" class="headerlink" title="3） 读取函数"></a>3） 读取函数</h4><pre class="line-numbers language-php"><code class="language-php"><span class="token punctuation">[</span><span class="token function">fread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">]</span><span class="token punctuation">(</span>https<span class="token punctuation">:</span><span class="token comment" spellcheck="true">//www.php.net/manual/zh/function.fread.php)</span>
+<span class="token function">fgets</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 获取一行</span>
+<span class="token function">fgetc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 获取一个字符</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="4）-关闭函数"><a href="#4）-关闭函数" class="headerlink" title="4） 关闭函数"></a>4） 关闭函数</h4><pre class="line-numbers language-php"><code class="language-php"><span class="token function">fclose</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="5）-不需要-fopen-打开的函数"><a href="#5）-不需要-fopen-打开的函数" class="headerlink" title="5） 不需要 fopen() 打开的函数"></a>5） 不需要 fopen() 打开的函数</h4><pre class="line-numbers language-php"><code class="language-php"><span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token function">file_put_contents</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="6）-其他读取函数"><a href="#6）-其他读取函数" class="headerlink" title="6） 其他读取函数"></a>6） 其他读取函数</h4><pre class="line-numbers language-php"><code class="language-php"><span class="token function">file</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 将整个一个文件读取到一个数组中</span>
+<span class="token function">readfile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 将文件读取出来，并输出到缓冲区</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h4 id="7）-访问远程文件"><a href="#7）-访问远程文件" class="headerlink" title="7） 访问远程文件"></a>7） 访问远程文件</h4><pre><code>在 php.ini中 开启 allow_url_fopen，
     HTTP协议连接只能使用只读，
     FTP协议可以使用只读或者只写。
 
-注：只有开启该项，才可以通过 file_get_contents() 或者 file_put_contents() 进行连接或者读取!!!</code></pre><h3 id="2、延伸：目录操作函数、其他文件操作"><a href="#2、延伸：目录操作函数、其他文件操作" class="headerlink" title="2、延伸：目录操作函数、其他文件操作"></a>2、延伸：目录操作函数、其他文件操作</h3><h4 id="1）目录操作函数"><a href="#1）目录操作函数" class="headerlink" title="1）目录操作函数"></a>1）目录操作函数</h4><pre class="line-numbers language-PHP"><code class="language-PHP">// 名称相关
-basename();
-dirname();
-pathinfo();
+注：只有开启该项，才可以通过 file_get_contents() 或者 file_put_contents() 进行连接或者读取!!!</code></pre><h3 id="2、延伸：目录操作函数、其他文件操作"><a href="#2、延伸：目录操作函数、其他文件操作" class="headerlink" title="2、延伸：目录操作函数、其他文件操作"></a>2、延伸：目录操作函数、其他文件操作</h3><h4 id="1）目录操作函数"><a href="#1）目录操作函数" class="headerlink" title="1）目录操作函数"></a>1）目录操作函数</h4><pre class="line-numbers language-php"><code class="language-php"><span class="token comment" spellcheck="true">// 名称相关</span>
+<span class="token function">basename</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">dirname</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">pathinfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// 目录读取
-opendir();
-readdir();
-closedir();
-rewinddir();
+<span class="token comment" spellcheck="true">// 目录读取</span>
+<span class="token function">opendir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">readdir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">closedir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">rewinddir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// 目录删除
-// 注意事项：目录中一定要为空【在删除的时候，先去遍历一下，把里面的内容清除掉，先删除文件，再去删除目录】
-rmdir();
+<span class="token comment" spellcheck="true">// 目录删除</span>
+<span class="token comment" spellcheck="true">// 注意事项：目录中一定要为空【在删除的时候，先去遍历一下，把里面的内容清除掉，先删除文件，再去删除目录】</span>
+<span class="token function">rmdir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// 目录创建
-mkdir();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="2）-其他函数"><a href="#2）-其他函数" class="headerlink" title="2） 其他函数"></a>2） 其他函数</h4><pre class="line-numbers language-PHP"><code class="language-PHP">// 文件大小
-filesize();
+<span class="token comment" spellcheck="true">// 目录创建</span>
+<span class="token function">mkdir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="2）-其他函数"><a href="#2）-其他函数" class="headerlink" title="2） 其他函数"></a>2） 其他函数</h4><pre class="line-numbers language-php"><code class="language-php"><span class="token comment" spellcheck="true">// 文件大小</span>
+<span class="token function">filesize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// 目录大小
-disk_free_space(); // 磁盘剩余空间
-disk_total_space(); // 磁盘总空间
+<span class="token comment" spellcheck="true">// 目录大小</span>
+<span class="token function">disk_free_space</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 磁盘剩余空间</span>
+<span class="token function">disk_total_space</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 磁盘总空间</span>
 
-// 文件拷贝
-copy();
+<span class="token comment" spellcheck="true">// 文件拷贝</span>
+<span class="token function">copy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// 删除文件
-unlink();
+<span class="token comment" spellcheck="true">// 删除文件</span>
+<span class="token function">unlink</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// 文件类型
-filetype(); // 获取到的文件类型 file/dir类型【常见的只有这两种】
+<span class="token comment" spellcheck="true">// 文件类型</span>
+<span class="token function">filetype</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 获取到的文件类型 file/dir类型【常见的只有这两种】</span>
 
-// 重命名文件或者目录
-rename(); // 不光可以重名名，还可以移动目录的位置【相当与 Linux命令mv】
+<span class="token comment" spellcheck="true">// 重命名文件或者目录</span>
+<span class="token function">rename</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 不光可以重名名，还可以移动目录的位置【相当与 Linux命令mv】</span>
 
-// 文件截取
-ftruncate(); // 截取到指定大小
+<span class="token comment" spellcheck="true">// 文件截取</span>
+<span class="token function">ftruncate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 截取到指定大小</span>
 
-// 文件属性
-file_exists();   // 判断文件是否存在
-is_readable();   // 是否可读
-is_writable();   // 是否可写
-is_executable(); // 是否可执行
-filectime();     // inode修改时间
-fileatime();     // 访问时间
-filemtime();     // 整个修改时间
+<span class="token comment" spellcheck="true">// 文件属性</span>
+<span class="token function">file_exists</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">// 判断文件是否存在</span>
+<span class="token function">is_readable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">// 是否可读</span>
+<span class="token function">is_writable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">// 是否可写</span>
+<span class="token function">is_executable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 是否可执行</span>
+<span class="token function">filectime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// inode修改时间</span>
+<span class="token function">fileatime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// 访问时间</span>
+<span class="token function">filemtime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// 整个修改时间</span>
 
-// 文件锁
-flock();
+<span class="token comment" spellcheck="true">// 文件锁</span>
+<span class="token function">flock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// 文件指针
-ftell();  // 返回文件指针读/写的位置
-fseek();  // 在文件指针中定位
-rewind(); // 倒回文件指针的位置<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment" spellcheck="true">// 文件指针</span>
+<span class="token function">ftell</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 返回文件指针读/写的位置</span>
+<span class="token function">fseek</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 在文件指针中定位</span>
+<span class="token function">rewind</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 倒回文件指针的位置</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="二、解题方法"><a href="#二、解题方法" class="headerlink" title="二、解题方法"></a>二、解题方法</h2><blockquote>
 <p>1、牢记文件操作函数及几种打开模式<br>2、理解目录的操作步骤<br>3、尝试练习完成目录的复制和删除函数的编写</p>
 </blockquote>
 <p><strong>注：在做目录删除的时候，一定要将 . 和 .. 过滤掉，否则会递归的向上删除掉所有的目录！！！</strong></p>
-<h2 id="三、真题"><a href="#三、真题" class="headerlink" title="三、真题"></a>三、真题</h2><h3 id="1、不断在文件-hello-txt-头部写入一行-“Hello-World”-字符串，要求代码完整。"><a href="#1、不断在文件-hello-txt-头部写入一行-“Hello-World”-字符串，要求代码完整。" class="headerlink" title="1、不断在文件 hello.txt 头部写入一行 “Hello World” 字符串，要求代码完整。"></a>1、不断在文件 hello.txt 头部写入一行 “Hello World” 字符串，要求代码完整。</h3><h4 id="1）创建一个-hello-txt-文件，并写入如下内容："><a href="#1）创建一个-hello-txt-文件，并写入如下内容：" class="headerlink" title="1）创建一个 hello.txt 文件，并写入如下内容："></a>1）创建一个 hello.txt 文件，并写入如下内容：</h4><pre><code>This is My Test Content!!!</code></pre><h4 id="2）-创建一个-test-php-文件，并写入如下内容："><a href="#2）-创建一个-test-php-文件，并写入如下内容：" class="headerlink" title="2） 创建一个 test.php 文件，并写入如下内容："></a>2） 创建一个 test.php 文件，并写入如下内容：</h4><pre class="line-numbers language-PHP"><code class="language-PHP">// 打开文件
-$file = './hello.txt';
-$handle = fopen($file, 'r'); // 用 r+ 会把后面的内容覆盖掉
+<h2 id="三、真题"><a href="#三、真题" class="headerlink" title="三、真题"></a>三、真题</h2><h3 id="1、不断在文件-hello-txt-头部写入一行-“Hello-World”-字符串，要求代码完整。"><a href="#1、不断在文件-hello-txt-头部写入一行-“Hello-World”-字符串，要求代码完整。" class="headerlink" title="1、不断在文件 hello.txt 头部写入一行 “Hello World” 字符串，要求代码完整。"></a>1、不断在文件 hello.txt 头部写入一行 “Hello World” 字符串，要求代码完整。</h3><h4 id="1）创建一个-hello-txt-文件，并写入如下内容："><a href="#1）创建一个-hello-txt-文件，并写入如下内容：" class="headerlink" title="1）创建一个 hello.txt 文件，并写入如下内容："></a>1）创建一个 hello.txt 文件，并写入如下内容：</h4><pre><code>This is My Test Content!!!</code></pre><h4 id="2）-创建一个-test-php-文件，并写入如下内容："><a href="#2）-创建一个-test-php-文件，并写入如下内容：" class="headerlink" title="2） 创建一个 test.php 文件，并写入如下内容："></a>2） 创建一个 test.php 文件，并写入如下内容：</h4><pre class="line-numbers language-php"><code class="language-php"><span class="token comment" spellcheck="true">// 打开文件</span>
+<span class="token variable">$file</span> <span class="token operator">=</span> <span class="token string">'./hello.txt'</span><span class="token punctuation">;</span>
+<span class="token variable">$handle</span> <span class="token operator">=</span> <span class="token function">fopen</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 用 r+ 会把后面的内容覆盖掉</span>
 
-// 将文件的内容读取出来，在开头加入 Hello World
-$content = fread($handle, filesize($file));
-$content = 'Hello World' . $content;
-fclose($handle);
+<span class="token comment" spellcheck="true">// 将文件的内容读取出来，在开头加入 Hello World</span>
+<span class="token variable">$content</span> <span class="token operator">=</span> <span class="token function">fread</span><span class="token punctuation">(</span><span class="token variable">$handle</span><span class="token punctuation">,</span> <span class="token function">filesize</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$content</span> <span class="token operator">=</span> <span class="token string">'Hello World'</span> <span class="token punctuation">.</span> <span class="token variable">$content</span><span class="token punctuation">;</span>
+<span class="token function">fclose</span><span class="token punctuation">(</span><span class="token variable">$handle</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// 将拼接好的字符串写回到文件当中
-$handle = fopen($file, 'w');
-fwrite($handle, $content);
-fclose($handle);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="3）运行结果："><a href="#3）运行结果：" class="headerlink" title="3）运行结果："></a>3）运行结果：</h4><pre><code>Hello WorldThis is My Test Content!!!</code></pre><h3 id="2、通过PHP函数的方式对目录进行遍历，写出程序。"><a href="#2、通过PHP函数的方式对目录进行遍历，写出程序。" class="headerlink" title="2、通过PHP函数的方式对目录进行遍历，写出程序。"></a>2、通过PHP函数的方式对目录进行遍历，写出程序。</h3><h4 id="1）-创建目录-test-及在其目录下创建1、2、3文件；"><a href="#1）-创建目录-test-及在其目录下创建1、2、3文件；" class="headerlink" title="1） 创建目录 test,及在其目录下创建1、2、3文件；"></a>1） 创建目录 test,及在其目录下创建1、2、3文件；</h4><h4 id="2）-在-test目录的同级新建一个文件夹-example-php用来遍历目录，如下："><a href="#2）-在-test目录的同级新建一个文件夹-example-php用来遍历目录，如下：" class="headerlink" title="2） 在 test目录的同级新建一个文件夹 example.php用来遍历目录，如下："></a>2） 在 test目录的同级新建一个文件夹 example.php用来遍历目录，如下：</h4><pre class="line-numbers language-PHP"><code class="language-PHP">
-// 打开目录
-// 读取目录当中的文件
-// 如果文件类型是目录，继续打开目录
-// 读取子目录的文件
-// 如果文件类型是文件，输出目录
-// 关闭目录
+<span class="token comment" spellcheck="true">// 将拼接好的字符串写回到文件当中</span>
+<span class="token variable">$handle</span> <span class="token operator">=</span> <span class="token function">fopen</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">fwrite</span><span class="token punctuation">(</span><span class="token variable">$handle</span><span class="token punctuation">,</span> <span class="token variable">$content</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">fclose</span><span class="token punctuation">(</span><span class="token variable">$handle</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="3）运行结果："><a href="#3）运行结果：" class="headerlink" title="3）运行结果："></a>3）运行结果：</h4><pre><code>Hello WorldThis is My Test Content!!!</code></pre><h3 id="2、通过PHP函数的方式对目录进行遍历，写出程序。"><a href="#2、通过PHP函数的方式对目录进行遍历，写出程序。" class="headerlink" title="2、通过PHP函数的方式对目录进行遍历，写出程序。"></a>2、通过PHP函数的方式对目录进行遍历，写出程序。</h3><h4 id="1）-创建目录-test-及在其目录下创建1、2、3文件；"><a href="#1）-创建目录-test-及在其目录下创建1、2、3文件；" class="headerlink" title="1） 创建目录 test,及在其目录下创建1、2、3文件；"></a>1） 创建目录 test,及在其目录下创建1、2、3文件；</h4><h4 id="2）-在-test目录的同级新建一个文件夹-example-php用来遍历目录，如下："><a href="#2）-在-test目录的同级新建一个文件夹-example-php用来遍历目录，如下：" class="headerlink" title="2） 在 test目录的同级新建一个文件夹 example.php用来遍历目录，如下："></a>2） 在 test目录的同级新建一个文件夹 example.php用来遍历目录，如下：</h4><pre class="line-numbers language-php"><code class="language-php">
+<span class="token comment" spellcheck="true">// 打开目录</span>
+<span class="token comment" spellcheck="true">// 读取目录当中的文件</span>
+<span class="token comment" spellcheck="true">// 如果文件类型是目录，继续打开目录</span>
+<span class="token comment" spellcheck="true">// 读取子目录的文件</span>
+<span class="token comment" spellcheck="true">// 如果文件类型是文件，输出目录</span>
+<span class="token comment" spellcheck="true">// 关闭目录</span>
 
-function loopDir($dir)
-{
-    $handle = opendir($dir);
+<span class="token keyword">function</span> <span class="token function">loopDir</span><span class="token punctuation">(</span><span class="token variable">$dir</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token variable">$handle</span> <span class="token operator">=</span> <span class="token function">opendir</span><span class="token punctuation">(</span><span class="token variable">$dir</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    // 当目录中的文件都读取完时，才跳出循环【为了避免为0时，跳出循环】
-    while (false !== ($file = readdir($handle))) {
-        if ($file != '.' &amp;&amp; $file != '..') {
-            echo $file.'<br>';
-            if (filetype($dir.'/'.$file) == 'dir') {
-                loopDir($dir.'/'.$file);
-            }
-        }
-    }
-}
+    <span class="token comment" spellcheck="true">// 当目录中的文件都读取完时，才跳出循环【为了避免为0时，跳出循环】</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">false</span> <span class="token operator">!==</span> <span class="token punctuation">(</span><span class="token variable">$file</span> <span class="token operator">=</span> <span class="token function">readdir</span><span class="token punctuation">(</span><span class="token variable">$handle</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$file</span> <span class="token operator">!=</span> <span class="token string">'.'</span> <span class="token operator">&amp;&amp;</span> <span class="token variable">$file</span> <span class="token operator">!=</span> <span class="token string">'..'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">echo</span> <span class="token variable">$file</span><span class="token punctuation">.</span><span class="token string">'&lt;br&gt;'</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">filetype</span><span class="token punctuation">(</span><span class="token variable">$dir</span><span class="token punctuation">.</span><span class="token string">'/'</span><span class="token punctuation">.</span><span class="token variable">$file</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">'dir'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token function">loopDir</span><span class="token punctuation">(</span><span class="token variable">$dir</span><span class="token punctuation">.</span><span class="token string">'/'</span><span class="token punctuation">.</span><span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-// 遍历的目录名称
-$dir = './test';
-loopDir($dir);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment" spellcheck="true">// 遍历的目录名称</span>
+<span class="token variable">$dir</span> <span class="token operator">=</span> <span class="token string">'./test'</span><span class="token punctuation">;</span>
+<span class="token function">loopDir</span><span class="token punctuation">(</span><span class="token variable">$dir</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {

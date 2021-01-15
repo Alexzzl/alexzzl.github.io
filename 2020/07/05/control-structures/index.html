@@ -504,18 +504,18 @@
 <li>效率：如果条件比一个简单的比较要复杂得多，或者在一个很多次的循环中，那么用 switch 语句可能会快一些</li>
 </ul>
 <p>代码执行：</p>
-<pre class="line-numbers language-PHP"><code class="language-PHP">for() {
-    switch($var) {
-        case...:
-            break; // 等价于 continue;【如果需要其作用于 for循环，此处应为 continue2（跳出两层循环）】
-        case...:
-            break;
-        case...:
-            break;
-        default: ...:
-            break;
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token keyword">for</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">switch</span><span class="token punctuation">(</span><span class="token variable">$var</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">case</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">:</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 等价于 continue;【如果需要其作用于 for循环，此处应为 continue2（跳出两层循环）】</span>
+        <span class="token keyword">case</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">:</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token keyword">case</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">:</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token keyword">default</span><span class="token punctuation">:</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">:</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="二-解题方法"><a href="#二-解题方法" class="headerlink" title="二. 解题方法"></a>二. 解题方法</h2><blockquote>
 <p>注：理解循环内部机制，更易于记忆 <strong>foreach的reset</strong> 特性，分支结构中理解了 <strong>switch…case</strong> 的执行步骤也就不难理解为什么效率高了。</p>
 </blockquote>

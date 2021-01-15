@@ -505,9 +505,9 @@
 <li>== 比较值是否相等； === 比较值是否相等，类型是否相同。</li>
 <li>等值判断（FALSE的七种情况）</li>
 </ul>
-<pre class="line-numbers language-PHP"><code class="language-PHP">var_dump(''== false);// bool(true)
-var_dump('0' == 0);// bool(true)
-var_dump(0.0 == 0);// bool(true)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token operator">==</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// bool(true)</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token string">'0'</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// bool(true)</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token number">0.0</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// bool(true)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>FALSE的七种情况都满足:</p>
 <ul>
 <li>整型 0</li>
@@ -536,32 +536,32 @@ var_dump(0.0 == 0);// bool(true)<span aria-hidden="true" class="line-numbers-row
 <h4 id="4）-逻辑运算符"><a href="#4）-逻辑运算符" class="headerlink" title="4） 逻辑运算符"></a>4） 逻辑运算符</h4><ol>
 <li>短路作用</li>
 </ol>
-<pre class="line-numbers language-PHP"><code class="language-PHP">var_dump($a = true || $b == 3); // bool(true) 前面是 true，后面不会执行【|| : 一真为真】
-var_dump($b = false && $a == 1);// bool(false) 前面是 false，后面不会执行【&&：一假为假】<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$a</span> <span class="token operator">=</span> <span class="token boolean">true</span> <span class="token operator">||</span> <span class="token variable">$b</span> <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// bool(true) 前面是 true，后面不会执行【|| : 一真为真】</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$b</span> <span class="token operator">=</span> <span class="token boolean">false</span> <span class="token operator">&amp;&amp;</span> <span class="token variable">$a</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// bool(false) 前面是 false，后面不会执行【&amp;&amp;：一假为假】</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ol start="2">
 <li><code>||</code> 和 <code>&amp;&amp;</code> 与 <code>or</code> 和 <code>and</code> 的优先级不同</li>
 </ol>
-<pre class="line-numbers language-PHP"><code class="language-PHP">$a = false || true; // 先执行 false || true，得到 true,再赋值给 $a
-var_dump($a); // bool(true)
-$b = false or true;// 先执行 $b = false，整体为 true，则 $b的值为 false
-var_dump($b);// bool(false)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token variable">$a</span> <span class="token operator">=</span> <span class="token boolean">false</span> <span class="token operator">||</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 先执行 false || true，得到 true,再赋值给 $a</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// bool(true)</span>
+<span class="token variable">$b</span> <span class="token operator">=</span> <span class="token boolean">false</span> <span class="token keyword">or</span> <span class="token boolean">true</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 先执行 $b = false，整体为 true，则 $b的值为 false</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$b</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// bool(false)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="二-解题方法"><a href="#二-解题方法" class="headerlink" title="二. 解题方法"></a>二. 解题方法</h2><blockquote>
 <p>重点记忆：<strong>递增/递减</strong>运算符的<strong>运算规则</strong>，逻辑运算符的 <strong>短路效果</strong>，在看到逻辑运算符要多考虑 <strong>优先级</strong> 问题。</p>
 </blockquote>
 <h2 id="三-真题"><a href="#三-真题" class="headerlink" title="三. 真题"></a>三. 真题</h2><p><strong>下列程序中，请写出打印输出的结果：</strong></p>
-<pre class="line-numbers language-PHP"><code class="language-PHP">$a = 0;
-$b = 0;
+<pre class="line-numbers language-php"><code class="language-php"><span class="token variable">$a</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token variable">$b</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
 
-if ($a = 3 > 0 || $b = 3 > 0) {
-    var_dump($a); // bool(true)
-    var_dump($b); // int(0)
-    $a++;
-    $b++;
-    echo $a."\n"; // 1
-    var_dump($a); // bool(true)
-    echo $b."\n"; // 1
-    var_dump($b); // int(1)
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$a</span> <span class="token operator">=</span> <span class="token number">3</span> <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">||</span> <span class="token variable">$b</span> <span class="token operator">=</span> <span class="token number">3</span> <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// bool(true)</span>
+    <span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$b</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// int(0)</span>
+    <span class="token variable">$a</span><span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token variable">$b</span><span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token variable">$a</span><span class="token punctuation">.</span><span class="token string">"\n"</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 1</span>
+    <span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// bool(true)</span>
+    <span class="token keyword">echo</span> <span class="token variable">$b</span><span class="token punctuation">.</span><span class="token string">"\n"</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 1</span>
+    <span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$b</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// int(1)</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>分析：</strong></p>
 <pre><code>1）优先级问题：(从大到小)
     &gt;
@@ -574,22 +574,22 @@ if ($a = 3 > 0 || $b = 3 > 0) {
     $b = 0;
 3） 递增运算
     $a++; // $a = true; true++; =&gt; true  =&gt; 1
-    $b++; // $b = 0; 0++; =&gt; 1</code></pre><pre class="line-numbers language-PHP"><code class="language-PHP">$a = 0;
-$b = 0;
+    $b++; // $b = 0; 0++; =&gt; 1</code></pre><pre class="line-numbers language-php"><code class="language-php"><span class="token variable">$a</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token variable">$b</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
 
-if ($a = 3 > 0 || $b = 3 > 0) {
-    var_dump($a); // bool(true)
-    var_dump($b); // int(0)
-    $a++;
-    $b++;
-    echo $a."\n"; // 1
-    var_dump($a); // bool(true)
-    echo $b."\n"; // 1
-    var_dump($b); // int(1)
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$a</span> <span class="token operator">=</span> <span class="token number">3</span> <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">||</span> <span class="token variable">$b</span> <span class="token operator">=</span> <span class="token number">3</span> <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// bool(true)</span>
+    <span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$b</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// int(0)</span>
+    <span class="token variable">$a</span><span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token variable">$b</span><span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token variable">$a</span><span class="token punctuation">.</span><span class="token string">"\n"</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 1</span>
+    <span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// bool(true)</span>
+    <span class="token keyword">echo</span> <span class="token variable">$b</span><span class="token punctuation">.</span><span class="token string">"\n"</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 1</span>
+    <span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$b</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// int(1)</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>运算结果：</strong></p>
-<pre class="line-numbers language-PHP"><code class="language-PHP">$a = true;
-$b = 1;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token variable">$a</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token variable">$b</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {

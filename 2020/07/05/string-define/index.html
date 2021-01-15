@@ -487,11 +487,11 @@
                 <h2 id="一、定义方式"><a href="#一、定义方式" class="headerlink" title="一、定义方式"></a>一、定义方式</h2><blockquote>
 <p>单引号/ 双引号 / heredoc 和 newdoc；（三种）</p>
 </blockquote>
-<h3 id="1、-单引号"><a href="#1、-单引号" class="headerlink" title="1、 单引号"></a>1、 单引号</h3><pre class="line-numbers language-PHP"><code class="language-PHP">// 单引号定义变量
-$str = 'a b c d e f $a g'; // 此时$a会被原样输出<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h3 id="2、-双引号"><a href="#2、-双引号" class="headerlink" title="2、 双引号"></a>2、 双引号</h3><pre class="line-numbers language-PHP"><code class="language-PHP">// 此处可以把 '{$a}' 换成特殊字符，如 & $a &
-// 原因：单引号的执行效率更高，且将name放到外面可读性更强。
-$str = "a b c d e f '{$a}' g h"; // a b c d e f $a的值 g h <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="1、-单引号"><a href="#1、-单引号" class="headerlink" title="1、 单引号"></a>1、 单引号</h3><pre class="line-numbers language-php"><code class="language-php"><span class="token comment" spellcheck="true">// 单引号定义变量</span>
+<span class="token variable">$str</span> <span class="token operator">=</span> <span class="token string">'a b c d e f $a g'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 此时$a会被原样输出</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="2、-双引号"><a href="#2、-双引号" class="headerlink" title="2、 双引号"></a>2、 双引号</h3><pre class="line-numbers language-php"><code class="language-php"><span class="token comment" spellcheck="true">// 此处可以把 '{$a}' 换成特殊字符，如 &amp; $a &amp;</span>
+<span class="token comment" spellcheck="true">// 原因：单引号的执行效率更高，且将name放到外面可读性更强。</span>
+<span class="token variable">$str</span> <span class="token operator">=</span> <span class="token string">"a b c d e f '{$a}' g h"</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// a b c d e f $a的值 g h </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <blockquote>
 <p>注：双引号中包含单引号，单引号中包含变量，该变量是会被解析的，因为最外层是双引号，且里面的单引号会被原样输出.</p>
 </blockquote>
@@ -504,24 +504,24 @@ $str = "a b c d e f '{$a}' g h"; // a b c d e f $a的值 g h <span aria-hidden="
 <li>结尾要放到一行的开头（前面不可以有任何字符，包括空格）【适用于超长的内容】；</li>
 <li>功能与双引号一致；</li>
 </ul>
-<pre class="line-numbers language-PHP"><code class="language-PHP">$str = <<< EoT
- . 
- . // 内容可以为字符串，可以写变量、转义字符等，都可以被解析（功能与双引号一致）
- .
- .
-EoT;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token variable">$str</span> <span class="token operator">=</span> <span class="token operator">&lt;</span><span class="token operator">&lt;</span><span class="token operator">&lt;</span> EoT
+ <span class="token punctuation">.</span> 
+ <span class="token punctuation">.</span> <span class="token comment" spellcheck="true">// 内容可以为字符串，可以写变量、转义字符等，都可以被解析（功能与双引号一致）</span>
+ <span class="token punctuation">.</span>
+ <span class="token punctuation">.</span>
+EoT<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="4、-newdoc"><a href="#4、-newdoc" class="headerlink" title="4、 newdoc"></a>4、 newdoc</h3><ul>
 <li>开头和结尾名字要保持一致，且定界符处用单引号括起来；</li>
 <li>结尾要放到一行的开头（前面不可以有任何字符，包括空格）【适用于超长的内容】；</li>
 <li>功能与单引号一致</li>
 </ul>
-<pre class="line-numbers language-PHP"><code class="language-PHP">// newdoc
-$str = <<<'EoT'
- .
- .
- .
- .
-EoT;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token comment" spellcheck="true">// newdoc</span>
+<span class="token variable">$str</span> <span class="token operator">=</span> <span class="token operator">&lt;</span><span class="token operator">&lt;</span><span class="token operator">&lt;</span><span class="token string">'EoT'</span>
+ <span class="token punctuation">.</span>
+ <span class="token punctuation">.</span>
+ <span class="token punctuation">.</span>
+ <span class="token punctuation">.</span>
+EoT<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="二、区别"><a href="#二、区别" class="headerlink" title="二、区别"></a>二、区别</h2><ul>
 <li>单引号：<ul>
 <li>(1) 单引号不能解析变量；</li>

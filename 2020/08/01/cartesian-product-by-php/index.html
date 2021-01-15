@@ -510,66 +510,66 @@
 </blockquote>
 </li>
 </ol>
-<h2 id="第三-、程序算法"><a href="#第三-、程序算法" class="headerlink" title="第三 、程序算法"></a>第三 、程序算法</h2><pre class="line-numbers language-PHP"><code class="language-PHP"><?php
+<h2 id="第三-、程序算法"><a href="#第三-、程序算法" class="headerlink" title="第三 、程序算法"></a>第三 、程序算法</h2><pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
 
-class Cartesian {
-    private $matrix = [];
+<span class="token keyword">class</span> <span class="token class-name">Cartesian</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token variable">$matrix</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-    /**
+    <span class="token comment" spellcheck="true">/**
      * @param array $matrix
-     */
-    public function setMatrix (array $matrix): void {
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">setMatrix</span> <span class="token punctuation">(</span><span class="token keyword">array</span> <span class="token variable">$matrix</span><span class="token punctuation">)</span><span class="token punctuation">:</span> void <span class="token punctuation">{</span>
 
-        $this->matrix[] = $matrix;
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">matrix</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$matrix</span><span class="token punctuation">;</span>
 
-    }
+    <span class="token punctuation">}</span>
 
-    public function exportData () {
-        if (!$this->matrix) {
-            return [];
-        }
-        $list = [];
-        foreach ($this->matrix as $key => $value) {
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">exportData</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">matrix</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token variable">$list</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">matrix</span> <span class="token keyword">as</span> <span class="token variable">$key</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-            $this->logic($value, $list);
-        }
-        return $list;
-    }
+            <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">logic</span><span class="token punctuation">(</span><span class="token variable">$value</span><span class="token punctuation">,</span> <span class="token variable">$list</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token variable">$list</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    public function logic ($item, &$list = []) {
-        if (!$list) {
-            foreach ($item as $value) {
-                $temp = [];
-                $temp[] = $value;
-                array_push($list, $temp);
-            }
-            return "";
-        }
-        $forupdate = [];
-        foreach ($list as $v) {
-            $_temp = $v;
-            foreach ($item as $i) {
-                $__temp = $_temp;
-                array_push($__temp, $i);
-                $forupdate[] = $__temp;
-            }
-        }
-        $list = $forupdate;
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">logic</span> <span class="token punctuation">(</span><span class="token variable">$item</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span><span class="token variable">$list</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token variable">$list</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$item</span> <span class="token keyword">as</span> <span class="token variable">$value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token variable">$temp</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token variable">$temp</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$value</span><span class="token punctuation">;</span>
+                <span class="token function">array_push</span><span class="token punctuation">(</span><span class="token variable">$list</span><span class="token punctuation">,</span> <span class="token variable">$temp</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> <span class="token string">""</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token variable">$forupdate</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$list</span> <span class="token keyword">as</span> <span class="token variable">$v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token variable">$_temp</span> <span class="token operator">=</span> <span class="token variable">$v</span><span class="token punctuation">;</span>
+            <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$item</span> <span class="token keyword">as</span> <span class="token variable">$i</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token variable">$__temp</span> <span class="token operator">=</span> <span class="token variable">$_temp</span><span class="token punctuation">;</span>
+                <span class="token function">array_push</span><span class="token punctuation">(</span><span class="token variable">$__temp</span><span class="token punctuation">,</span> <span class="token variable">$i</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token variable">$forupdate</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$__temp</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token variable">$list</span> <span class="token operator">=</span> <span class="token variable">$forupdate</span><span class="token punctuation">;</span>
 
-    }
-}
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-// 使用方法
+<span class="token comment" spellcheck="true">// 使用方法</span>
 
-    $cartesian = new Cartesian();
+    <span class="token variable">$cartesian</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Cartesian</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    $cartesian->setMatrix(['红色','黄色',"蓝色"]);
-    $cartesian->setMatrix(['M','L','XL','XXL']);
-    $cartesian->setMatrix(['北京','郑州']);
-    $cartesian->setMatrix(['男','女']);
+    <span class="token variable">$cartesian</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">setMatrix</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'红色'</span><span class="token punctuation">,</span><span class="token string">'黄色'</span><span class="token punctuation">,</span><span class="token string">"蓝色"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$cartesian</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">setMatrix</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'M'</span><span class="token punctuation">,</span><span class="token string">'L'</span><span class="token punctuation">,</span><span class="token string">'XL'</span><span class="token punctuation">,</span><span class="token string">'XXL'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$cartesian</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">setMatrix</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'北京'</span><span class="token punctuation">,</span><span class="token string">'郑州'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$cartesian</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">setMatrix</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'男'</span><span class="token punctuation">,</span><span class="token string">'女'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    $dd =  $cartesian->exportData();
-    print_r($dd);
+    <span class="token variable">$dd</span> <span class="token operator">=</span>  <span class="token variable">$cartesian</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">exportData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">print_r</span><span class="token punctuation">(</span><span class="token variable">$dd</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -829,58 +829,50 @@ class Cartesian {
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/08/01/cartesian-product-by-php/">
+                <a href="/2021/01/08/tcp-udp-different/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="笛卡尔积算法（PHP实现）">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="TCP和UDP的区别">
                         
-                        <span class="card-title">笛卡尔积算法（PHP实现）</span>
+                        <span class="card-title">TCP和UDP的区别</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            第一、定义笛卡尔乘积是指在数学中，两个集合X和Y的笛卡尔积（Cartesian product），又称直积，表示为X×Y，第一个对象是X的成员而第二个对象是Y的所有可能有序对的其中一个成员
-
-假设集合A={a, b}，集合B={0, 1, 
+                            TCP与UDP基本区别TCP 传输控制协议（英语：Transmission Control Protocol，缩写：TCP）是一种面向连接的、可靠的、基于字节流的传输层通信协议，位于OSI模型的传输层。UDP 用户数据报协议（英语：User
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-01
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-08
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%95%B0%E7%BB%84/" class="post-category">
-                                    数组
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Alex
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%95%B0%E7%BB%84/">
-                        <span class="chip bg-color">数组</span>
+                    <a href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">网络基础</span>
                     </a>
                     
-                    <a href="/tags/%E6%95%B0%E5%AD%A6/">
-                        <span class="chip bg-color">数学</span>
+                    <a href="/tags/TCP/">
+                        <span class="chip bg-color">TCP</span>
                     </a>
                     
-                    <a href="/tags/PHP/">
-                        <span class="chip bg-color">PHP</span>
+                    <a href="/tags/UDP/">
+                        <span class="chip bg-color">UDP</span>
                     </a>
                     
                 </div>
