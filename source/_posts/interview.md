@@ -166,3 +166,15 @@ var_dump(implode('hello', array())); // string(0) ""
 [Clean Code PHP](https://github.com/jupeter/clean-code-php)，《代码整洁之道》的 PHP 实践。
 
 [TCP的那些事儿](https://coolshell.cn/?s=TCP%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF)
+
+[MySQL数据库 优化](https://segmentfault.com/a/1190000018631870)
+
+[MySQL 数据库优化的思路](https://www.jishuchi.com/read/mysql-interview/2810)
+
+[MySQL 索引最左前缀原则](https://www.jishuchi.com/read/mysql-interview/2791)
+
+[MySQL 面试题](https://www.jishuchi.com/books/mysql-interview)
+
+[PHP 技术池](https://www.jishuchi.com/explore?cid=6&tab=popular)
+
+[MySQL数据库优化大全方法汇总](https://developer.aliyun.com/article/756895)
