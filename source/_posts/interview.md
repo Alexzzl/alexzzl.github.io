@@ -178,3 +178,54 @@ var_dump(implode('hello', array())); // string(0) ""
 [PHP 技术池](https://www.jishuchi.com/explore?cid=6&tab=popular)
 
 [MySQL数据库优化大全方法汇总](https://developer.aliyun.com/article/756895)
+
+[PHP 发送 HTTP 请求的几种方式](https://learnku.com/articles/5396/how-many-ways-does-php-send-http-requests)
+
+[PHP使用CURL详解](https://www.cnblogs.com/lxj0205/p/9360826.html)
+
+### 什么是死锁？怎么解决？
+
+死锁是指两个或多个事务在同一资源上相互占用，并请求锁定对方的资源，从而导致恶性循环的现象。
+
+常见的解决死锁的方法
+
+1、如果不同程序会并发存取多个表，尽量约定以相同的顺序访问表，可以大大降低死锁机会。
+
+2、在同一个事务中，尽可能做到一次锁定所需要的所有资源，减少死锁产生概率；
+
+3、对于非常容易产生死锁的业务部分，可以尝试使用升级锁定颗粒度，通过表级锁定来减少死锁产生的概率；
+
+如果业务处理不好可以用分布式事务锁或者使用乐观锁
+
+
+### 数据库的乐观锁和悲观锁是什么？怎么实现的？
+
+数据库管理系统（DBMS）中的并发控制的任务是确保在多个事务同时存取数据库中同一数据时不破坏事务的隔离性和统一性以及数据库的统一性。乐观并发控制（乐观锁）和悲观并发控制（悲观锁）是并发控制主要采用的技术手段。
+
+**悲观锁**：假定会发生并发冲突，屏蔽一切可能违反数据完整性的操作。在查询完数据的时候就把事务锁起来，直到提交事务。实现方式：使用数据库中的锁机制
+
+**乐观锁**：假设不会发生并发冲突，只在提交操作时检查是否违反数据完整性。在修改数据的时候把事务锁起来，通过version的方式来进行锁定。实现方式：乐一般会使用版本号机制或CAS算法实现。
+
+**两种锁的使用场景**
+
+从上面对两种锁的介绍，我们知道两种锁各有优缺点，不可认为一种好于另一种，像**乐观锁适用于写比较少的情况下（多读场景）**，即冲突真的很少发生的时候，这样可以省去了锁的开销，加大了系统的整个吞吐量。
+
+但如果是多写的情况，一般会经常产生冲突，这就会导致上层应用会不断的进行retry，这样反倒是降低了性能，所以**一般多写的场景下用悲观锁就比较合适。**
+
+[PHP生成图片验证码(simple)](https://www.cnblogs.com/chenbjin/p/3409934.html)
+
+[分库分表](https://www.51cto.com/article/709614.html)
+
+[Linux 磁盘满了解决方案](https://zhuanlan.zhihu.com/p/68692685)
+
+[Linux服务器如何查看CPU占用率、内存占用、带宽占用](https://blog.csdn.net/shangdi1988/article/details/51066098)
+
+[Linux Crontab 定时任务](https://www.runoob.com/w3cnote/linux-crontab-tasks.html)
+
+[Redis](https://www.runoob.com/redis/redis-intro.html)
+
+[Cloud Messaging](https://firebase-php.readthedocs.io/en/4.x/cloud-messaging.html#cloud-messaging)
+
+[每小时推送百万级通知](https://www.infoq.cn/article/qrczizibtkuq1nsqt2yv)
+
+[Selenium + PhantomJS + python 简单实现爬虫的功能](https://www.cnblogs.com/luxiaojun/p/6144748.html)

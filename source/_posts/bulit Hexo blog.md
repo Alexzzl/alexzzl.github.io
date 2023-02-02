@@ -22,7 +22,7 @@ npm config set registry https://registry.npm.taobao.org
 ## 注册 Github
 
 ## 安装 Hexo
-定位到博客文件目录下，输入`npm i hexo-cli -g`安装Hexo。会有几个报错，无视它就行。
+定位到博客文件目录下，输入`npm i hexo-cli --location=global`安装Hexo。会有几个报错，无视它就行。
 安装完后输入`hexo -v`验证是否安装成功。
 然后就要初始化我们的网站，输入`hexo init`初始化文件夹，接着输入npm install安装必备的组件。
 
