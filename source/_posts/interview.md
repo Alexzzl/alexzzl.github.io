@@ -229,3 +229,5 @@ var_dump(implode('hello', array())); // string(0) ""
 [每小时推送百万级通知](https://www.infoq.cn/article/qrczizibtkuq1nsqt2yv)
 
 [Selenium + PhantomJS + python 简单实现爬虫的功能](https://www.cnblogs.com/luxiaojun/p/6144748.html)
+
+[MySQL索引](https://mp.weixin.qq.com/s/MMwwYw5OO2qMjeoyjCAd_A)
