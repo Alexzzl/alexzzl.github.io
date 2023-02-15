@@ -28,6 +28,38 @@ npm config set registry https://registry.npm.taobao.org
 
 这样本地的网站配置也弄好啦，输入`hexo g`生成静态网页，然后输入`hexo s`打开本地服务器
 ## 连结 GitHub 与本地
+首先右键打开git bash，然后输入下面命令：
+```Bash
+git config --global user.name "Alexzzl"
+git config --global user.email "805119233@qq.com"
+```
+用户名和邮箱根据你注册github的信息自行修改。
+
+然后生成密钥SSH key：
+```Bash
+ssh-keygen -t rsa -C "805119233@qq.com"
+```
+打开[Github](https://github.com/)，在头像下面点击settings，再点击SSH and GPG keys，新建一个SSH，名字随便。
+
+git bash中输入
+
+```Bash
+cat ~/.ssh/id_rsa.pub
+```
+将输出的内容复制到框中，点击确定保存。
+
+输入`ssh -T git@github.com`，出现你的用户名，那就成功了。
+
+打开博客根目录下的_config.yml文件，这是博客的配置文件，在这里你可以修改与博客相关的各种信息。
+
+修改最后一行的配置：
+```Bash
+deploy:
+  type: git
+  repository: https://github.com/alexzzl/alexzzl.github.io
+  branch: master
+```
+repository修改为你自己的github项目地址。
 
 ## 写文章、发布文章
 首先在博客根目录下右键打开git bash，安装一个扩展`npm i hexo-deployer-git`。
