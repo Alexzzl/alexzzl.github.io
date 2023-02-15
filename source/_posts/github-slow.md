@@ -1,5 +1,5 @@
 ---
-title: github slow
+title: GitHub访问慢解决方法
 top: false
 cover: false
 toc: true
@@ -43,11 +43,12 @@ GitHub访问慢或者无法访问一般是由以下问题引起的：
 
 ## 1.2 本地hosts文件映射ip地址
 找到对应的IP地址后，将IP地址与网站地址进行对应，并将对应关系写入本地hosts文件中。
-在windows系统中的c:/Windows/System32/drivers/etc 下找到hosts文件，编辑打开，将四个网站的IP地址和网站地址对应写入进入，作为DNS的映射。
+在Windows系统中的 `C:\Windows\System32\drivers\etc` 下找到hosts文件，编辑打开，将四个网站的IP地址和网站地址对应写入进入，作为DNS的映射。
 hosts文件直接编辑修改时可能没有权限，可以通过以下方法完成修改：
 
 1. 修改当前文件权限，右键hosts文件 -> 属性 -> 安全 -> 编辑 -> Users -> Users的权限后加入写权限
 1. 将当前文件复制到别的盘中，修改文件后复制回来覆盖原来文件
+
 ```
 #github dns映射 格式如：  [ip]: [domainName]
 199.232.69.194 github.global.ssl.Fastly.net
