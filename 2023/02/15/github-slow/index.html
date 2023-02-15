@@ -4,7 +4,7 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="github slow, Alex">
+    <meta name="keywords" content="GitHub访问慢解决方法, Alex">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>github slow | Alex</title>
+    <title>GitHub访问慢解决方法 | Alex</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -309,12 +309,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">github slow</h1>
+                    <h1 class="description center-align post-title">GitHub访问慢解决方法</h1>
                 </div>
             </div>
         </div>
@@ -489,16 +489,16 @@
 <li>assets-cdn.github.com.ipaddress.com/</li>
 <li>codeload.github.com.ipaddress.com/</li>
 </ul>
-<h2 id="1-2-本地hosts文件映射ip地址"><a href="#1-2-本地hosts文件映射ip地址" class="headerlink" title="1.2 本地hosts文件映射ip地址"></a>1.2 本地hosts文件映射ip地址</h2><p>找到对应的IP地址后，将IP地址与网站地址进行对应，并将对应关系写入本地hosts文件中。<br>在windows系统中的c:/Windows/System32/drivers/etc 下找到hosts文件，编辑打开，将四个网站的IP地址和网站地址对应写入进入，作为DNS的映射。<br>hosts文件直接编辑修改时可能没有权限，可以通过以下方法完成修改：</p>
+<h2 id="1-2-本地hosts文件映射ip地址"><a href="#1-2-本地hosts文件映射ip地址" class="headerlink" title="1.2 本地hosts文件映射ip地址"></a>1.2 本地hosts文件映射ip地址</h2><p>找到对应的IP地址后，将IP地址与网站地址进行对应，并将对应关系写入本地hosts文件中。<br>在Windows系统中的 <code>C:\Windows\System32\drivers\etc</code> 下找到hosts文件，编辑打开，将四个网站的IP地址和网站地址对应写入进入，作为DNS的映射。<br>hosts文件直接编辑修改时可能没有权限，可以通过以下方法完成修改：</p>
 <ol>
 <li>修改当前文件权限，右键hosts文件 -&gt; 属性 -&gt; 安全 -&gt; 编辑 -&gt; Users -&gt; Users的权限后加入写权限</li>
-<li>将当前文件复制到别的盘中，修改文件后复制回来覆盖原来文件<br>```<br>#github dns映射 格式如：  [ip]: [domainName]</li>
-<li>232.69.194 github.global.ssl.Fastly.net</li>
-<li>82.114.4 GitHub.com</li>
-<li>199.108.153 assets-cdn.Github.com</li>
-<li>82.114.9 codeload.Github.com<pre><code></code></pre></li>
+<li>将当前文件复制到别的盘中，修改文件后复制回来覆盖原来文件</li>
 </ol>
-<h2 id="1-3-刷新DNS缓存来访问新的映射"><a href="#1-3-刷新DNS缓存来访问新的映射" class="headerlink" title="1.3 刷新DNS缓存来访问新的映射"></a>1.3 刷新DNS缓存来访问新的映射</h2><p>hosts文件内容更新成功后，还需要刷新windows系统的DNS才可以生效。<br>使用 win+R ，打开cmd命令行，输入 <code>ipconfig/flushdns</code> 刷新DNS缓存即可。</p>
+<pre><code>#github dns映射 格式如：  [ip]: [domainName]
+199.232.69.194 github.global.ssl.Fastly.net
+140.82.114.4 GitHub.com
+185.199.108.153 assets-cdn.Github.com
+140.82.114.9 codeload.Github.com</code></pre><h2 id="1-3-刷新DNS缓存来访问新的映射"><a href="#1-3-刷新DNS缓存来访问新的映射" class="headerlink" title="1.3 刷新DNS缓存来访问新的映射"></a>1.3 刷新DNS缓存来访问新的映射</h2><p>hosts文件内容更新成功后，还需要刷新windows系统的DNS才可以生效。<br>使用 win+R ，打开cmd命令行，输入 <code>ipconfig/flushdns</code> 刷新DNS缓存即可。</p>
 <p>刷新完成后，再次打开github网站时速度会明显提升，需要注意的是以上github网站的ip经常发生变化，如果访问再次变慢可以重新更新映射信息。</p>
 <h1 id="2-一键更新"><a href="#2-一键更新" class="headerlink" title="2. 一键更新"></a>2. 一键更新</h1><p>手动更新本地hosts文件的方式比较繁琐，我们可以编写程序来代替手动操作，实现需要时hosts文件内容的一键更新。<br>推荐一个github开源项目：<a href="https://github.com/isevenluo/github-hosts" target="_blank" rel="noopener">更新hosts</a> ，<a href="https://gitee.com/isevenluo/github-hosts" target="_blank" rel="noopener">国内git地址</a>，作者会每日提供最新的相关ip地址映射信息，我们可以直接复制使用或者使用其中的程序进行一键更新操作。<br>作为一个coder，我们也可以自己去实现一个脚本程序。</p>
 <p>作者：东方甲乙木土<br>链接：<a href="https://juejin.cn/post/7019683061977579557" target="_blank" rel="noopener">https://juejin.cn/post/7019683061977579557</a><br>来源：稀土掘金<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
@@ -757,9 +757,9 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="github slow">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="GitHub访问慢解决方法">
                         
-                        <span class="card-title">github slow</span>
+                        <span class="card-title">GitHub访问慢解决方法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
