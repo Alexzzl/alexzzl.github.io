@@ -1,0 +1,1343 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="keywords" content="【PHP面试题】HTTP/1.1中，状态码 200 301 304 403 404 500 的含义。, Alex">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>【PHP面试题】HTTP/1.1中，状态码 200 301 304 403 404 500 的含义。 | Alex</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Alex</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Alex</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">【PHP面试题】HTTP/1.1中，状态码 200 301 304 403 404 500 的含义。</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/PHP%E9%9D%A2%E8%AF%95/">
+                                <span class="chip bg-color">PHP面试</span>
+                            </a>
+                        
+                            <a href="/tags/PHP%E5%9F%BA%E7%A1%80/">
+                                <span class="chip bg-color">PHP基础</span>
+                            </a>
+                        
+                            <a href="/tags/HTTP%E5%8D%8F%E8%AE%AE/">
+                                <span class="chip bg-color">HTTP协议</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/PHP/" class="post-category">
+                                PHP
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-07-08
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="一、考点"><a href="#一、考点" class="headerlink" title="一、考点"></a>一、考点</h2><h3 id="1、HTTP协议状态码"><a href="#1、HTTP协议状态码" class="headerlink" title="1、HTTP协议状态码"></a>1、HTTP协议状态码</h3><h4 id="①-状态码的作用："><a href="#①-状态码的作用：" class="headerlink" title="① 状态码的作用："></a>① 状态码的作用：</h4><blockquote>
+<p>HTTP状态码本身负责客户端HTTP请求返回的结果，标记服务器端的处理是否正常，通知出现的一些错误等等工作。状态码的职责是当我们的客户端向我们的服务器端发送请求的时候，描述返回的结果，使得用户可以知道服务器端是否处理了请求。</p>
+</blockquote>
+<h4 id="②-五类响应：1XX、2XX、3XX、4XX、5XX"><a href="#②-五类响应：1XX、2XX、3XX、4XX、5XX" class="headerlink" title="② 五类响应：1XX、2XX、3XX、4XX、5XX"></a>② 五类响应：1XX、2XX、3XX、4XX、5XX</h4><blockquote>
+<ul>
+<li>1XX : （Informational）信息类状态码（表示接收请求状态处理）</li>
+<li>2XX : （Success）成功状态码（表示请求正常处理完毕）</li>
+<li>3XX : （Redirection）重定向（表示需要进行附加操作，已完成请求）</li>
+<li>4XX : （Client Error）客户端错误（表示服务器无法处理请求）</li>
+<li>5XX : （Server Error）服务器错误状态码（表示服务器处理请求的时候出错）</li>
+</ul>
+</blockquote>
+<h4 id="③-常见状态码："><a href="#③-常见状态码：" class="headerlink" title="③ 常见状态码："></a>③ 常见状态码：</h4><blockquote>
+<ul>
+<li>200(OK) : 从状态码发出的请求被服务器正常处理。</li>
+<li>204(No Content) : 服务器接收的请求已成功处理，但在返回的响应报文中不含实体的主体部分【即没有内容】。</li>
+<li>206(Partial Content) : 部分的内容（如：客户端进行了范围请求，但是服务器成功执行了这部分的干请求）。</li>
+<li>301(Moved Permanently) : 跳转，代表永久性重定向（请求的资源已被分配了新的URI，以后已使用资源，现在设置了URI）。</li>
+<li>302(Found) : 临时性重定向（请求的资源已经分配了新的URI，希望用户本次能够使用新的URI来进行访问）。</li>
+<li>303(See Other) : 由于请求对应的资源存在的另一个URI（因使用get方法，定向获取请求的资源）。</li>
+<li>304(Not Modified) : 客户端发送附带条件的请求时，服务器端允许请求访问资源，但因发生请求未满足条件的情况后，直接返回了 304。</li>
+<li>307(Temporary Redirect) : 临时重定向【该状态码与302有着相同的含义】。</li>
+<li>400(Bad Request) : 请求报文中存在语法错误（当错误方式时，需修改请求的内容后，再次发送请求）。</li>
+<li>401(Unauthorized) : 发送的请求需要有通过HTTP认证的认证信息。</li>
+<li>403(Forbidden) : 对请求资源的访问被服务器拒绝了。</li>
+<li>404(Not Found) : 服务器上无法找到请求的资源。</li>
+<li>500(Internal Server Error) : 服务器端在执行请求时发生了错误。</li>
+<li>503(Service Unavailable) : 服务器暂时处于超负载或者是正在进行停机维护，现在无法处理请求。</li>
+</ul>
+</blockquote>
+<h3 id="2、延伸"><a href="#2、延伸" class="headerlink" title="2、延伸"></a>2、延伸</h3><h4 id="1）-OSI-七层模型"><a href="#1）-OSI-七层模型" class="headerlink" title="1） OSI 七层模型"></a>1） OSI 七层模型</h4><p>OSI（Open System Interconnect），即开放式系统互联。</p>
+<blockquote>
+<p>物理层、数据链路成、网络层、传输层、会话层、表示层、应用层。</p>
+</blockquote>
+<p><strong>第一层： 物理层</strong></p>
+<blockquote>
+<p>作用：建立、维护、断开物理连接。</p>
+</blockquote>
+<p><strong>第二层： 数据链路层</strong></p>
+<blockquote>
+<p>作用：建立逻辑连接、进行硬件地址寻址、差错校验等功能。</p>
+</blockquote>
+<p><strong>第三层： 网络层</strong></p>
+<blockquote>
+<p>作用：进行逻辑地址寻址，实现不同网络之间的路径选择。</p>
+</blockquote>
+<p><strong>第四层： 传输层</strong></p>
+<blockquote>
+<p>作用：定义传输数据的协议端口号，以及流控和差错校验。</p>
+</blockquote>
+<p>协议有：TCP、UDP，数据包一旦离开网卡即进入网络传输层。</p>
+<p><strong>第五层： 会话层</strong></p>
+<blockquote>
+<p>作用：建立、管理、终止会话。</p>
+</blockquote>
+<p><strong>第六层： 表示层</strong></p>
+<blockquote>
+<p>作用：数据的表示、安全、压缩。</p>
+</blockquote>
+<p><strong>第七层： 应用层</strong></p>
+<blockquote>
+<p>作用：网络服务于最终用户的一个接口。</p>
+</blockquote>
+<p>协议有：HTTP、FTP、TFTP、SMTP、SNMP、DNS、TELNET、HTTPS、POP3、DHCP等。</p>
+<h4 id="2）-HTTP协议的工作特点和工作原理"><a href="#2）-HTTP协议的工作特点和工作原理" class="headerlink" title="2） HTTP协议的工作特点和工作原理"></a>2） HTTP协议的工作特点和工作原理</h4><p>① 工作特点：</p>
+<blockquote>
+<ul>
+<li>基于 B/S 模式；</li>
+<li>通信开销小、简单快速、传输成本低；</li>
+<li>使用灵活、可使用超文本传输协议；</li>
+<li>节省传输时间；</li>
+<li>无状态。</li>
+</ul>
+</blockquote>
+<p>② 工作原理：</p>
+<blockquote>
+<p>客户端发送请求给服务器，创建一个TCP连接，指定端口号，默认80， 连接到服务器，服务器监听浏览器请求，一旦监听到客户端请求，分析请求类型后，服务器会向客户端返回状态信息和数据内容。</p>
+</blockquote>
+<h4 id="3）-HTTP协议常见请求-响应头和请求方法"><a href="#3）-HTTP协议常见请求-响应头和请求方法" class="headerlink" title="3） HTTP协议常见请求/响应头和请求方法"></a>3） HTTP协议常见请求/响应头和请求方法</h4><p>① HTTP协议常见请求/响应头</p>
+<pre><code>Content-Type;                // 请求到与实体对于的MIME信息
+Accept;                      // 指定客户端能接受的内容类型
+Origin;                      // 最初的请求来源于哪【主要用于POST请求】
+Cookie;                      // HTTP请求发起时，发送给服务端的 cookie的值
+Cache-Control;               // 指定请求和响应的缓存机制
+User-Agent;                  // 用户信息
+Referrer;                    // 上级请求路径
+X-Forwarded-For;             // 请求端真实的IP 【做代理的时候，可以用该项来进行获取】
+Access-Control-Allow-Origin; // 允许特定的域名来进行访问【通常情况下来做(跨域)使用】
+Last-Modified;               // 请求资源的最后响应时间</code></pre><p>② HTTP协议的请求方法</p>
+<blockquote>
+<ul>
+<li>GET ： 会显示请求指定的资源（主要用于【数据的读取】，GET方法是幂等方法）【幂等：每次GET拿到的数据都是一样的】。【查】</li>
+<li>POST ：会向指定资源提交数据，请求服务器进行处理（请求可能会创建新的资源和修改现有的资源）【非幂等资源：POST每次在提交的时候，根据数据的不同，会创建不同的数据】，POST是非幂等方法，【通常情况下，创建用 POST方法，遵循的是 RESTful API 的规则】。【增】</li>
+<li>HEAD ： 与 GET方法 一样，都是向服务器发送指定资源的请求，但是服务器在响应 HEAD请求 时，不会回传资源的内容部分，只会回传 HEAD信息（即头信息）。</li>
+<li>OPTIONS ： 与 HEAD方式 类似，一般也是用于客户端查看服务器的性能（该方法会请求服务器，返回该资源支持的所有 HTTP请求方法，该方法会用 * 来代替资源名称，向服务器发送 OPTIONS请求）【可以测试服务器功能是否正常】</li>
+<li>PUT ： 会向指定资源位置上上传最新的内容，PUT方法是幂等的方法， 通过该方法客户端可以将 指定资源的最新数据 传送给服务器 取代指定资源的内容，【通常情况下，修改用PUT方法，遵循的是RESTful API 规则】。【改】</li>
+<li>DELETE ：请求服务器删除所请求的URI所标识的资源，DELETE请求后指定资源会被删除，DELETE方法是幂等的方法。【删】</li>
+<li>TRACE ： 请求服务器回显其收到的请求信息，该方法主要用于HTTP请求的测试或者诊断。</li>
+</ul>
+</blockquote>
+<p>③ 常考点：HTTP协议的GET和POST请求方法的区别</p>
+<blockquote>
+<ul>
+<li>在做后退按钮和刷新的时候，get是没有太大变化的；但是post数据就会被重新提交；</li>
+<li>get可以收藏为书签；post不可能被收藏为书签；</li>
+<li>get请求可以被浏览器缓存；post不可以被缓存；</li>
+<li>get请求的时候，编码类型是application/x-www-form-urlencoded；post请求的时候，除了get的编码类型，编码类型还可以是multipart/form-data为二进制数据使用多重编码，该变量类型在做上传的时候使用；</li>
+<li>get在历史记录中，参数会保留在浏览器历史记录中；post参数不会存于浏览器的历史记录中；</li>
+<li>对于数据的长度限制，在get中是有长度的限制的，当发送数据的时候，get方法会向URL添加数据，URL的长度是受限制的，最大限制是2048个字符；</li>
+<li>post是没有限制的；</li>
+<li>对于数据类型的限制，get只允许GB2312；post是没有限制的，也允许二进制的数据；</li>
+<li>对于安全性，get安全性比较差，所发送的数据是URL的一部分，在发送密码或者是其他敏感信息的时候，绝对不能使用get；post安全性比较高，因为 参数不会被保存在浏览器历史记录 或者是 web服务器日志 中；</li>
+<li>对于可见性，get请求数据在URL中对所有人都是可见的；post请求的数据不会显示在URL中。</li>
+</ul>
+</blockquote>
+<h4 id="4）-HTTPS协议的工作原理"><a href="#4）-HTTPS协议的工作原理" class="headerlink" title="4） HTTPS协议的工作原理"></a>4） HTTPS协议的工作原理</h4><blockquote>
+<p>HTTPS是一种基于SSL/TLS的HTTP协议，所有的HTTP数据都是在SSL/TLS协议封装之上传输的。<br>HTTPS协议在HTTP协议的基础上，添加了SSL/TLS握手以及数据加密传输，也属于应用层协议。</p>
+</blockquote>
+<h4 id="5）-常见网络协议含义及端口"><a href="#5）-常见网络协议含义及端口" class="headerlink" title="5） 常见网络协议含义及端口"></a>5） 常见网络协议含义及端口</h4><blockquote>
+<ul>
+<li>FTP : 文件传输协议，用来下载文件，上传主页【默认端口：21】</li>
+<li>Telnet : 一种用于远程登录的端口，用户可以以自己的身份远程连接到计算机上，通过这种端口，可以提供一种基于DOS模式下的通信服务【端口：23】</li>
+<li>SMTP : 定义了简单邮件传输协议，现在很多邮件服务器都用该协议，用于发送邮件【端口：25】</li>
+<li>POP3 : 接收邮件协议 ，与 SMTP对应【默认端口：110】</li>
+<li>HTTP : 超文本传输协议【端口：80】</li>
+<li>DNS : 用于域名解析服务，该服务在 WINDOWS NT系统中使用最多【默认端口：53】</li>
+</ul>
+</blockquote>
+<h2 id="二、解题方法"><a href="#二、解题方法" class="headerlink" title="二、解题方法"></a>二、解题方法</h2><blockquote>
+<p>理解并牢记以上知识点。</p>
+</blockquote>
+<h2 id="三、真题"><a href="#三、真题" class="headerlink" title="三、真题"></a>三、真题</h2><p>我们常见的HTTP协议、TCP协议分别位于OSI网络模型的第几层？</p>
+<blockquote>
+<ul>
+<li>HTTP协议：第七层【应用层】。</li>
+<li>TCP协议：第四层【传输层】。</li>
+</ul>
+</blockquote>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Alex</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://alexzzl.github.io/2020/07/08/http/">https://alexzzl.github.io/2020/07/08/http/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Alex</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/PHP%E9%9D%A2%E8%AF%95/">
+                                    <span class="chip bg-color">PHP面试</span>
+                                </a>
+                            
+                                <a href="/tags/PHP%E5%9F%BA%E7%A1%80/">
+                                    <span class="chip bg-color">PHP基础</span>
+                                </a>
+                            
+                                <a href="/tags/HTTP%E5%8D%8F%E8%AE%AE/">
+                                    <span class="chip bg-color">HTTP协议</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/07/09/source-control-and-php-fpm/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="【PHP面试题】您是否使用过版本控制软件？如果有，您用的版本控制软件的名字是什么？">
+                        
+                        <span class="card-title">【PHP面试题】您是否使用过版本控制软件？如果有，您用的版本控制软件的名字是什么？</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            一、考点1、版本控制软件版本控制工具一共有两种：集中式 和 分布式
+
+集中式：中间有一个中央的服务器，所有的客户机都会将我们的版本信息上传到中央服务器（即版本信息只保存在中央 服务器中），当我们去上传或者下载的时候，都是从中央服务器来进行连
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-09
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/PHP/" class="post-category">
+                                    PHP
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/PHP%E9%9D%A2%E8%AF%95/">
+                        <span class="chip bg-color">PHP面试</span>
+                    </a>
+                    
+                    <a href="/tags/php-fpm/">
+                        <span class="chip bg-color">php-fpm</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E8%BD%AF%E4%BB%B6/">
+                        <span class="chip bg-color">版本控制软件</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/07/08/php-object-class/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="【PHP面试题】PHP的类权限控制修饰符">
+                        
+                        <span class="card-title">【PHP面试题】PHP的类权限控制修饰符</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            一、考点1、PHP的类权限控制修饰符
+
+
+
+类外
+子类
+类内
+
+
+
+
+public（公共的）
+√
+√
+√
+
+
+protected（受保护的）
+×
+√
+√
+
+
+private（私有的）
+×
+×
+√
+
+
+
+
+2、延伸1） 面向对象的封装、继承和
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-08
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/PHP/" class="post-category">
+                                    PHP
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/PHP%E9%9D%A2%E8%AF%95/">
+                        <span class="chip bg-color">PHP面试</span>
+                    </a>
+                    
+                    <a href="/tags/PHP%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">PHP基础</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+                        <span class="chip bg-color">面向对象</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="88630015"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">Alex</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Alexzzl" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:805119233@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=805119233" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 805119233" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/search.xml", 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":1}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+
+</html>
