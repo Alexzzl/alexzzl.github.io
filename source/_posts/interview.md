@@ -11,7 +11,7 @@ tags:
     - PHP面试
 categories:
 ---
-[PHP面试准备的资料](https://xianyunyh.gitbooks.io/php-interview/content/)
+
 
 
 [细说浏览器输入URL后发生了什么](https://segmentfault.com/a/1190000012092552)
