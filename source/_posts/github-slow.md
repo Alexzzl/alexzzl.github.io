@@ -8,7 +8,9 @@ date: 2023-02-15 23:02:14
 password:
 summary:
 tags:
+  - GitHub
 categories:
+  - 问题解决
 ---
 GitHub访问慢或者无法访问一般是由以下问题引起的：
 
