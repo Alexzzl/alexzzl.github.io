@@ -1,5 +1,5 @@
 ---
-title: Hexo 博客搭建与历史项目恢复完全指南]
+title: Hexo 博客搭建与历史项目恢复完全指南
 top: false
 cover: false
 toc: true
