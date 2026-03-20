@@ -487,78 +487,430 @@
                 <blockquote>
 <p><strong>原文链接</strong>：<a href="https://my.feishu.cn/wiki/V6XVwmqtfi3bRvkpOOKc6JjCngQ" target="_blank" rel="noopener">Windows 10/11 WSL 安装 OpenClaw 指南</a><br><strong>说明</strong>：本教程提供在 Windows 10/11 WSL 环境下安装和配置 OpenClaw 的完整流程，涵盖从环境初始化到国内 API 配置的全部步骤。</p>
 </blockquote>
-<h2 id="一、WSL-安装与网络配置"><a href="#一、WSL-安装与网络配置" class="headerlink" title="一、WSL 安装与网络配置"></a>一、WSL 安装与网络配置</h2><h3 id="1-1-WSL-版本说明"><a href="#1-1-WSL-版本说明" class="headerlink" title="1.1 WSL 版本说明"></a>1.1 WSL 版本说明</h3><p>WSL（适用于 Linux 的 Windows 子系统）目前有两个主要版本：</p>
-<ul>
-<li><strong>WSL 1</strong>：早期版本，采用系统调用转换层。</li>
-<li><strong>WSL 2</strong>：最新版本，运行完整的 Linux 内核，性能更佳。</li>
-</ul>
-<p><strong>强烈建议使用 WSL 2</strong>。</p>
-<h3 id="1-2-一键安装-WSL"><a href="#1-2-一键安装-WSL" class="headerlink" title="1.2 一键安装 WSL"></a>1.2 一键安装 WSL</h3><p>在具有管理员权限的 PowerShell 或 Windows 终端中执行：</p>
-<pre class="line-numbers language-powershell"><code class="language-powershell">wsl <span class="token operator">--</span>install<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>安装完成后，必须<strong>重启计算机</strong>。</p>
-<h3 id="1-3-验证安装状态"><a href="#1-3-验证安装状态" class="headerlink" title="1.3 验证安装状态"></a>1.3 验证安装状态</h3><pre class="line-numbers language-powershell"><code class="language-powershell">wsl <span class="token operator">--</span>status
-wsl <span class="token operator">--</span>version<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h3 id="1-4-Ubuntu-初始化配置"><a href="#1-4-Ubuntu-初始化配置" class="headerlink" title="1.4 Ubuntu 初始化配置"></a>1.4 Ubuntu 初始化配置</h3><p>首次启动 Ubuntu 时，根据提示创建 UNIX 用户名和密码。如果需要切换默认系统为 Ubuntu：</p>
-<pre class="line-numbers language-powershell"><code class="language-powershell">wsl <span class="token operator">--</span><span class="token function">set</span><span class="token operator">-</span>default Ubuntu
-wsl<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h3 id="1-5-系统更新与软件源配置"><a href="#1-5-系统更新与软件源配置" class="headerlink" title="1.5 系统更新与软件源配置"></a>1.5 系统更新与软件源配置</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> apt update <span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> apt upgrade -y
-<span class="token function">sudo</span> apt <span class="token function">install</span> -y curl <span class="token function">wget</span> <span class="token function">git</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h2 id="二、WSL-网络架构详解与配置"><a href="#二、WSL-网络架构详解与配置" class="headerlink" title="二、WSL 网络架构详解与配置"></a>二、WSL 网络架构详解与配置</h2><h3 id="2-1-镜像模式-推荐"><a href="#2-1-镜像模式-推荐" class="headerlink" title="2.1 镜像模式 (推荐)"></a>2.1 镜像模式 (推荐)</h3><p>镜像模式通过同步 Windows 宿主机的网络接口状态，解决了 NAT 模式下的 VPN 兼容性和局域网访问问题。</p>
-<h3 id="2-2-配置-wslconfig-文件"><a href="#2-2-配置-wslconfig-文件" class="headerlink" title="2.2 配置 .wslconfig 文件"></a>2.2 配置 .wslconfig 文件</h3><p>在 Windows 用户目录 <code>C:\Users\&lt;用户名&gt;\</code> 下创建 <code>.wslconfig</code>：</p>
-<pre class="line-numbers language-toml"><code class="language-toml">[wsl2]
-networkingMode=mirrored
-dnsTunneling=true
-autoProxy=true
-firewall=true
+<pre><code>## 一、WSL 安装与网络配置
 
-[experimental]
-autoMemoryReclaim=gradual
-hostAddressLoopback=true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>保存后执行 <code>wsl --shutdown</code> 并重启。</p>
-<h3 id="2-3-防火墙规则"><a href="#2-3-防火墙规则" class="headerlink" title="2.3 防火墙规则"></a>2.3 防火墙规则</h3><p>以管理员身份运行 PowerShell：</p>
-<pre class="line-numbers language-powershell"><code class="language-powershell">New<span class="token operator">-</span>NetFirewallRule <span class="token operator">-</span>DisplayName <span class="token string">"OpenClaw-Service"</span> <span class="token operator">-</span>Direction Inbound <span class="token operator">-</span>Action Allow <span class="token operator">-</span>Protocol TCP <span class="token operator">-</span>LocalPort 18789<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="三、安装-OpenClaw"><a href="#三、安装-OpenClaw" class="headerlink" title="三、安装 OpenClaw"></a>三、安装 OpenClaw</h2><h3 id="3-1-基础环境"><a href="#3-1-基础环境" class="headerlink" title="3.1 基础环境"></a>3.1 基础环境</h3><p>建议开启 sudo 免密权限：<code>sudo visudo</code>，添加 <code>your_user ALL=(ALL) NOPASSWD: ALL</code>。</p>
-<h3 id="3-2-运行安装脚本"><a href="#3-2-运行安装脚本" class="headerlink" title="3.2 运行安装脚本"></a>3.2 运行安装脚本</h3><pre class="line-numbers language-bash"><code class="language-bash">curl -fsSL https://openclaw.ai/install.sh <span class="token operator">|</span> <span class="token function">bash</span> -s -- --install-method <span class="token function">git</span>
-<span class="token function">sudo</span> corepack <span class="token function">enable</span>
-<span class="token function">sudo</span> corepack prepare pnpm@latest --activate<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="3-3-初始化向导"><a href="#3-3-初始化向导" class="headerlink" title="3.3 初始化向导"></a>3.3 初始化向导</h3><pre class="line-numbers language-bash"><code class="language-bash">openclaw onboard --install-daemon<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="四、国内-API-配置"><a href="#四、国内-API-配置" class="headerlink" title="四、国内 API 配置"></a>四、国内 API 配置</h2><h3 id="4-1-MiniMax-国内版"><a href="#4-1-MiniMax-国内版" class="headerlink" title="4.1 MiniMax 国内版"></a>4.1 MiniMax 国内版</h3><p><strong>端点</strong>: <code>https://api.minimaxi.com/anthropic</code></p>
+微软在 Windows 11 中极大地简化了安装流程，通过单一命令即可完成核心组件的启用。
+
+### 1.1 WSL 版本说明
+
+WSL（适用于 Linux 的 Windows 子系统）目前有两个主要版本：
+
+- **WSL 1**：早期版本，采用系统调用转换层
+- **WSL 2**：最新版本，运行完整的 Linux 内核，性能更佳
+
+**强烈建议使用 WSL 2**，因为它提供了完整的内核支持和更好的性能。
+
+### 1.2 一键安装 WSL
+
+在具有管理员权限的 PowerShell 或 Windows 终端中，执行以下命令：
+
+```powershell
+wsl --install</code></pre><p>此操作将自动执行以下逻辑：</p>
+<ol>
+<li><strong>启用虚拟机平台（Virtual Machine Platform）</strong> - WSL 2 的底层虚拟化技术</li>
+<li><strong>启用适用于 Linux 的 Windows 子系统</strong> - WSL 核心组件</li>
+<li><strong>下载并安装最新的 Linux 内核</strong> - WSL 2 需要的完整内核</li>
+<li><strong>默认下载并安装 Ubuntu 发行版</strong> - 主流的 Linux 发行版</li>
+</ol>
+<p>安装完成后，必须<strong>重启计算机</strong>以使 Hyper-V 管理程序生效。</p>
+<h3 id="1-3-验证安装状态"><a href="#1-3-验证安装状态" class="headerlink" title="1.3 验证安装状态"></a>1.3 验证安装状态</h3><p>重启后，通过以下命令验证状态：</p>
+<pre class="line-numbers language-powershell"><code class="language-powershell">wsl <span class="token operator">--</span>status
+wsl <span class="token operator">--</span>version<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><strong>预期输出示例</strong>：</p>
+<pre><code>WSL 版本: 2.0.xxxx.0
+内核版本: 5.15.xxxx
+WSLg 版本: 1.0.xxxx
+MSRDC 版本: 1.3.xxxx
+Direct3D 版本: 1.611.xxxx
+DXCore 版本: 10.0.xxxx
+Windows 版本: 10.0.22631.xxxx</code></pre><p>分析结果应确认当前 WSL 版本为 2.0 以上。</p>
+<h3 id="1-4-现有-WSL-用户更新"><a href="#1-4-现有-WSL-用户更新" class="headerlink" title="1.4 现有 WSL 用户更新"></a>1.4 现有 WSL 用户更新</h3><p>如果系统中已存在旧版 WSL，建议运行以下命令更新：</p>
+<pre class="line-numbers language-powershell"><code class="language-powershell">wsl <span class="token operator">--</span>update<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>此命令将下载并安装最新的 Linux 内核，确保镜像网络模式所需的内核组件已就绪。</p>
+<h3 id="1-5-Ubuntu-初始化配置"><a href="#1-5-Ubuntu-初始化配置" class="headerlink" title="1.5 Ubuntu 初始化配置"></a>1.5 Ubuntu 初始化配置</h3><p>首次启动 Ubuntu 时，系统会提示创建 UNIX 用户名和密码：</p>
+<pre><code>Installing, this may take a few minutes...
+Please create a default UNIX user account. The username and password must not match your Windows username.
+New UNIX username: spoto
+New password:
+Retype password:</code></pre><p>此账户拥有 <code>sudo</code> 权限，是后续执行安装操作的核心身份。</p>
+<h3 id="1-6-系统更新与软件源配置"><a href="#1-6-系统更新与软件源配置" class="headerlink" title="1.6 系统更新与软件源配置"></a>1.6 系统更新与软件源配置</h3><p>配置国内镜像源（如清华大学 TUNA 镜像或阿里云镜像），然后执行系统更新：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 更新软件包索引</span>
+<span class="token function">sudo</span> apt update
+
+<span class="token comment" spellcheck="true"># 升级已安装的软件包</span>
+<span class="token function">sudo</span> apt upgrade -y
+
+<span class="token comment" spellcheck="true"># 安装常用工具</span>
+<span class="token function">sudo</span> apt <span class="token function">install</span> -y curl <span class="token function">wget</span> <span class="token function">git</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h2 id="二、WSL-网络架构详解与配置"><a href="#二、WSL-网络架构详解与配置" class="headerlink" title="二、WSL 网络架构详解与配置"></a>二、WSL 网络架构详解与配置</h2><p>理解 WSL 网络架构对于 OpenClaw 的局域网访问和 VPN 兼容性至关重要。</p>
+<h3 id="2-1-WSL-2-网络架构原理"><a href="#2-1-WSL-2-网络架构原理" class="headerlink" title="2.1 WSL 2 网络架构原理"></a>2.1 WSL 2 网络架构原理</h3><p>WSL 2 采用轻量级虚拟机技术，运行完整的 Linux 内核。在网络层面，WSL 2 有两种主要模式：</p>
+<h4 id="NAT-模式（默认）"><a href="#NAT-模式（默认）" class="headerlink" title="NAT 模式（默认）"></a>NAT 模式（默认）</h4><p>在默认的 NAT（网络地址转换）模式下，WSL 2 虚拟机拥有独立的虚拟网络接口：</p>
+<pre><code>┌─────────────────────────────────────────────────────────┐
+│                      Windows 主机                         │
+│                                                         │
+│  ┌─────────────────────────────────────────────────┐   │
+│  │              WSL 2 虚拟机 (NAT)                  │   │
+│  │                                                 │   │
+│  │    eth0: 172.23.64.x (独立虚拟子网)              │   │
+│  │    Gateway: 172.23.64.1                         │   │
+│  │    DNS: 172.23.64.1                             │   │
+│  └─────────────────────────────────────────────────┘   │
+│              │                    │                     │
+│              ▼                    ▼                     │
+│    ┌─────────────────┐   ┌─────────────────┐           │
+│    │ 虚拟交换机       │   │   Windows       │           │
+│    │ (Hyper-V)       │   │   网络适配器     │           │
+│    └─────────────────┘   └─────────────────┘           │
+│              │                                        │
+│              ▼                                        │
+│    ┌─────────────────────────────────────────────────┐
+│    │            物理网络 / Internet                    │
+│    └─────────────────────────────────────────────────┘</code></pre><p><strong>NAT 模式特点</strong>：</p>
+<ul>
+<li>WSL 2 拥有独立的 IP 地址（172.x.x.x 范围）</li>
+<li>外部网络无法直接访问 WSL 2</li>
+<li>需要端口转发才能实现局域网访问</li>
+<li>VPN 兼容性较差，经常出现 DNS 解析问题</li>
+</ul>
+<h4 id="镜像模式（推荐）"><a href="#镜像模式（推荐）" class="headerlink" title="镜像模式（推荐）"></a>镜像模式（推荐）</h4><p>镜像模式通过直接将 Windows 宿主机的网络接口状态同步到 Linux 内核中，消除了虚拟子网带来的复杂性：</p>
+<pre><code>┌─────────────────────────────────────────────────────────┐
+│                      Windows 主机                         │
+│                                                         │
+│  ┌─────────────────────────────────────────────────┐   │
+│  │              WSL 2 虚拟机 (镜像)                  │   │
+│  │                                                 │   │
+│  │    eth0: 与宿主机共享相同局域网 IP                │   │
+│  │    直接暴露在 Windows 防火墙中                    │   │
+│  └─────────────────────────────────────────────────┘   │
+│              │                                        │
+│              │  (网络接口直接同步)                      │
+│              ▼                                        │
+│    ┌─────────────────────────────────────────────────┐
+│    │            物理网络 / Internet                    │
+│    └─────────────────────────────────────────────────┘</code></pre><p><strong>镜像模式特点</strong>：</p>
+<ul>
+<li>与宿主机共享相同的局域网 IP</li>
+<li>原生 IPv6 支持</li>
+<li>VPN 兼容性显著提升</li>
+<li>局域网内其他设备可直接发现</li>
+<li>防火墙规则直接作用于 WSL 应用</li>
+</ul>
+<h3 id="2-2-镜像模式技术优势对比"><a href="#2-2-镜像模式技术优势对比" class="headerlink" title="2.2 镜像模式技术优势对比"></a>2.2 镜像模式技术优势对比</h3><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>NAT 模式 (默认)</th>
+<th>镜像模式 (推荐)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IP 地址一致性</td>
+<td>独立虚拟 IP (172.x.x.x)</td>
+<td>与宿主机共享相同局域网 IP</td>
+</tr>
+<tr>
+<td>IPv6 支持</td>
+<td>极其有限</td>
+<td>全面原生支持</td>
+</tr>
+<tr>
+<td>localhost 行为</td>
+<td>跨平台回环复杂</td>
+<td>原生双向回环支持</td>
+</tr>
+<tr>
+<td>VPN 兼容性</td>
+<td>经常导致 DNS 丢包</td>
+<td>显著提升兼容性</td>
+</tr>
+<tr>
+<td>局域网可见性</td>
+<td>需要手动端口转发</td>
+<td>局域网内其他设备可直接发现</td>
+</tr>
+<tr>
+<td>防火墙控制</td>
+<td>独立规则</td>
+<td>直接使用 Windows 防火墙</td>
+</tr>
+<tr>
+<td>端口转发</td>
+<td>需要手动配置</td>
+<td>无需配置</td>
+</tr>
+</tbody></table>
+<h3 id="2-3-配置-wslconfig-文件"><a href="#2-3-配置-wslconfig-文件" class="headerlink" title="2.3 配置.wslconfig 文件"></a>2.3 配置.wslconfig 文件</h3><p>镜像模式属于全局配置，需在 Windows 用户目录下创建或修改 <code>.wslconfig</code> 文件。</p>
+<p><strong>步骤 1</strong>：打开文件资源管理器，导航到以下路径：</p>
+<pre><code>C:\Users\&lt;您的用户名&gt;\</code></pre><p><strong>步骤 2</strong>：如果文件不存在，创建名为 <code>.wslconfig</code> 的新文件（注意前面的点号）。</p>
+<p><strong>步骤 3</strong>：使用记事本打开文件，添加以下配置：</p>
+<pre class="line-numbers language-ini"><code class="language-ini"><span class="token selector">[wsl2]</span>
+# 启用镜像网络模式 - 这是最重要的配置
+<span class="token constant">networkingMode</span><span class="token attr-value"><span class="token punctuation">=</span>mirrored</span>
+# 启用 DNS 隧道，防止 VPN 环境下域名解析失效
+<span class="token constant">dnsTunneling</span><span class="token attr-value"><span class="token punctuation">=</span>true</span>
+# 强制 WSL 使用 Windows 的 HTTP 代理设置
+<span class="token constant">autoProxy</span><span class="token attr-value"><span class="token punctuation">=</span>true</span>
+# 启用集成防火墙支持
+<span class="token constant">firewall</span><span class="token attr-value"><span class="token punctuation">=</span>true</span>
+
+<span class="token selector">[experimental]</span>
+# 自动回收闲置内存，优化性能
+<span class="token constant">autoMemoryReclaim</span><span class="token attr-value"><span class="token punctuation">=</span>gradual</span>
+# 支持主机回环地址访问
+<span class="token constant">hostAddressLoopback</span><span class="token attr-value"><span class="token punctuation">=</span>true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>步骤 4</strong>：保存文件。</p>
+<p><strong>步骤 5</strong>：在 Windows 终端中执行以下命令以应用配置：</p>
+<pre class="line-numbers language-powershell"><code class="language-powershell">wsl <span class="token operator">--</span>shutdown<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>步骤 6</strong>：等待约 8 秒钟以确保虚拟机彻底关闭，然后重新启动 Ubuntu。</p>
+<p><strong>验证配置</strong>：</p>
+<p>进入 WSL 后，执行以下命令验证网络模式：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 查看网络接口</span>
+ip addr show
+
+<span class="token comment" spellcheck="true"># 查看路由表</span>
+ip route show
+
+<span class="token comment" spellcheck="true"># 测试与局域网的连通性</span>
+<span class="token function">ping</span> 192.168.1.1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>如果配置成功，你应该能够看到 WSL 使用与 Windows 相同的局域网 IP 地址段。</p>
+<h3 id="2-4-防火墙与安全策略调整"><a href="#2-4-防火墙与安全策略调整" class="headerlink" title="2.4 防火墙与安全策略调整"></a>2.4 防火墙与安全策略调整</h3><p>在镜像模式下，WSL2 应用将直接暴露在 Windows 防火墙规则中。为了确保 OpenClaw 的网络端口能够被正确访问，需要配置 Windows 防火墙规则。</p>
+<p><strong>步骤 1</strong>：以管理员身份打开 PowerShell</p>
+<p>在开始菜单中搜索 “PowerShell”，右键选择”以管理员身份运行”。</p>
+<p><strong>步骤 2</strong>：配置防火墙规则</p>
+<p>在镜像模式下，WSL2 应用将直接暴露在 Windows 防火墙规则中。以下提供两种配置方法：</p>
+<h4 id="方法一：标准防火墙命令（推荐用于-WSL2）"><a href="#方法一：标准防火墙命令（推荐用于-WSL2）" class="headerlink" title="方法一：标准防火墙命令（推荐用于 WSL2）"></a>方法一：标准防火墙命令（推荐用于 WSL2）</h4><p>对于 WSL2 镜像网络模式，推荐使用标准的 Windows 防火墙命令：</p>
+<pre class="line-numbers language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># 创建入站防火墙规则，允许 OpenClaw 服务端口</span>
+New<span class="token operator">-</span>NetFirewallRule <span class="token operator">-</span>DisplayName <span class="token string">"OpenClaw-Service"</span> <span class="token operator">-</span>Direction Inbound <span class="token operator">-</span>Action Allow <span class="token operator">-</span>Protocol TCP <span class="token operator">-</span>LocalPort 18789
+
+<span class="token comment" spellcheck="true"># 验证规则是否创建成功</span>
+Get<span class="token operator">-</span>NetFirewallRule <span class="token operator">-</span>DisplayName <span class="token string">"OpenClaw-Service"</span> <span class="token punctuation">|</span> <span class="token function">Format-Table</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="方法二：Hyper-V-防火墙命令（需要动态获取-VMCreatorId）"><a href="#方法二：Hyper-V-防火墙命令（需要动态获取-VMCreatorId）" class="headerlink" title="方法二：Hyper-V 防火墙命令（需要动态获取 VMCreatorId）"></a>方法二：Hyper-V 防火墙命令（需要动态获取 VMCreatorId）</h4><p>如果需要使用 Hyper-V 防火墙管理 WSL2 流量，请先动态获取系统的 VMCreatorId：</p>
+<pre class="line-numbers language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># 步骤 1：获取当前系统所有已注册的 VM 创建者</span>
+Get<span class="token operator">-</span>NetFirewallHyperVVMCreator<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><strong>重要说明</strong>：<code>{40E0AC32-46A5-438A-A0B2-2B479E8F2E90}</code> 是示例 GUID，实际值因系统而异。VMCreatorId 是 Hyper-V 防火墙用于标识特定虚拟机创建者的 GUID，<strong>每个系统的值都不同</strong>。</p>
+<pre class="line-numbers language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># 步骤 2：动态获取并配置（推荐）</span>
+<span class="token comment" spellcheck="true"># 获取所有 VMCreatorId 并配置</span>
+Get<span class="token operator">-</span>NetFirewallHyperVVMCreator <span class="token punctuation">|</span> <span class="token function">ForEach-Object</span> <span class="token punctuation">{</span>
+    <span class="token function">Set</span><span class="token operator">-</span>NetFirewallHyperVVMSetting <span class="token operator">-</span>Name <span class="token variable">$_</span><span class="token punctuation">.</span>Name <span class="token operator">-</span>DefaultInboundAction Allow
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true"># 步骤 3：创建细粒度规则</span>
+New<span class="token operator">-</span>NetFirewallHyperVRule <span class="token operator">-</span>DisplayName <span class="token string">"OpenClaw-Service"</span> <span class="token operator">-</span>Direction Inbound <span class="token operator">-</span>Action Allow <span class="token operator">-</span>Protocol TCP <span class="token operator">-</span>LocalPorts 18789<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>步骤 3</strong>：确认防火墙规则</p>
+<p>验证规则已正确创建：</p>
+<pre class="line-numbers language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># 查看所有 OpenClaw 相关规则</span>
+Get<span class="token operator">-</span>NetFirewallRule <span class="token punctuation">|</span> <span class="token function">Where-Object</span> <span class="token punctuation">{</span><span class="token variable">$_</span><span class="token punctuation">.</span>DisplayName <span class="token operator">-like</span> <span class="token string">"*OpenClaw*"</span><span class="token punctuation">}</span> <span class="token punctuation">|</span> <span class="token function">Format-Table</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><strong>步骤 4</strong>：测试端口连通性</p>
+<p>在 Windows 主机上测试端口是否开放：</p>
+<pre class="line-numbers language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># 测试本地端口</span>
+Test<span class="token operator">-</span>NetConnection <span class="token operator">-</span>ComputerName localhost <span class="token operator">-</span>Port 18789
+
+<span class="token comment" spellcheck="true"># 或使用 telnet</span>
+telnet localhost 18789<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-5-NAT-模式下的端口转发（备选方案）"><a href="#2-5-NAT-模式下的端口转发（备选方案）" class="headerlink" title="2.5 NAT 模式下的端口转发（备选方案）"></a>2.5 NAT 模式下的端口转发（备选方案）</h3><p>如果由于某些原因无法使用镜像模式，可以在 NAT 模式下配置端口转发：</p>
+<p><strong>步骤 1</strong>：在 PowerShell（管理员）中执行：</p>
+<pre class="line-numbers language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># 将 WSL 2 的 18789 端口转发到 localhost</span>
+netsh interface portproxy add v4tov4 listenport=18789 listenaddress=0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0 connectport=18789 connectaddress=<span class="token punctuation">(</span>wsl hostname <span class="token operator">-</span>I<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><strong>步骤 2</strong>：获取 WSL 的 IP 地址：</p>
+<pre class="line-numbers language-powershell"><code class="language-powershell">wsl hostname <span class="token operator">-</span>I<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>步骤 3</strong>：或者使用以下脚本自动获取并设置：</p>
+<pre class="line-numbers language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># 获取 WSL IP 并设置端口转发</span>
+<span class="token variable">$wslIp</span> = wsl hostname <span class="token operator">-</span>I
+netsh interface portproxy delete v4tov4 listenport=18789 listenaddress=0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0
+netsh interface portproxy add v4tov4 listenport=18789 listenaddress=0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0 connectport=18789 connectaddress=<span class="token variable">$wslIp</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>注意</strong>：每次重启 WSL 后，IP 地址可能会变化，需要重新配置端口转发。</p>
+<hr>
+<h2 id="三、WSL-环境下安装-OpenClaw"><a href="#三、WSL-环境下安装-OpenClaw" class="headerlink" title="三、WSL 环境下安装 OpenClaw"></a>三、WSL 环境下安装 OpenClaw</h2><h3 id="3-1-基础环境配置（免密设置）"><a href="#3-1-基础环境配置（免密设置）" class="headerlink" title="3.1 基础环境配置（免密设置）"></a>3.1 基础环境配置（免密设置）</h3><p>为了在后续安装脚本运行中避免频繁输入密码，建议为当前用户开启 <code>sudo</code> 免密权限：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> visudo<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>在文件末尾添加以下内容（将 <code>spoto</code> 替换为你的实际用户名）：</p>
+<pre><code>spoto ALL=(ALL) NOPASSWD: ALL</code></pre><p>保存并退出（Ctrl+O → Enter → Ctrl+X）。</p>
+<h3 id="3-2-安装基础工具"><a href="#3-2-安装基础工具" class="headerlink" title="3.2 安装基础工具"></a>3.2 安装基础工具</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> apt <span class="token function">install</span> -y curl <span class="token function">wget</span> <span class="token function">git</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="3-3-安装-Opencode-工具"><a href="#3-3-安装-Opencode-工具" class="headerlink" title="3.3 安装 Opencode 工具"></a>3.3 安装 Opencode 工具</h3><p>Opencode 用于简化后续的复杂配置过程：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">curl -fsSL https://opencode.ai/install <span class="token operator">|</span> <span class="token function">bash</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>验证安装：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">which</span> opencode
+opencode --version<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="3-4-安装-OpenClaw-官方脚本"><a href="#3-4-安装-OpenClaw-官方脚本" class="headerlink" title="3.4 安装 OpenClaw 官方脚本"></a>3.4 安装 OpenClaw 官方脚本</h3><p>使用官方提供的一键安装脚本进行部署：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">curl -fsSL https://molt.bot/install.sh <span class="token operator">|</span> <span class="token function">bash</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="3-5-运行初始化向导"><a href="#3-5-运行初始化向导" class="headerlink" title="3.5 运行初始化向导"></a>3.5 运行初始化向导</h3><p>安装完成后，运行初始化向导完成基本配置：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">openclaw onboard --install-daemon<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>按照向导提示完成配置：</p>
+<ul>
+<li>选择安全选项（理解风险）</li>
+<li>配置工作区目录</li>
+<li>设置 Gateway 认证方式</li>
+<li>其他基本配置</li>
+</ul>
+<h3 id="3-6-验证安装"><a href="#3-6-验证安装" class="headerlink" title="3.6 验证安装"></a>3.6 验证安装</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">which</span> openclaw
+openclaw --version
+openclaw gateway status<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h2 id="四、国内-API-配置"><a href="#四、国内-API-配置" class="headerlink" title="四、国内 API 配置"></a>四、国内 API 配置</h2><p>本章节帮助已安装 OpenClaw 的用户快速将 LLM API 替换为国内版本，支持 MiniMax 和智谱（GLM）两个主流国内 API。</p>
+<h3 id="4-1-前置条件检查"><a href="#4-1-前置条件检查" class="headerlink" title="4.1 前置条件检查"></a>4.1 前置条件检查</h3><p>检查 OpenClaw 是否已安装：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">which</span> openclaw
+<span class="token function">ps</span> aux <span class="token operator">|</span> <span class="token function">grep</span> openclaw
+openclaw --version<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="4-2-获取-API-Key"><a href="#4-2-获取-API-Key" class="headerlink" title="4.2 获取 API Key"></a>4.2 获取 API Key</h3><p>根据你要使用的 API 服务，前往对应平台获取 API Key：</p>
+<table>
+<thead>
+<tr>
+<th>服务商</th>
+<th>控制台地址</th>
+<th>API Key 获取位置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MiniMax</td>
+<td><a href="https://www.minimaxi.com" target="_blank" rel="noopener">https://www.minimaxi.com</a></td>
+<td>控制台 → API Keys</td>
+</tr>
+<tr>
+<td>智谱 AI</td>
+<td><a href="https://bigmodel.cn" target="_blank" rel="noopener">https://bigmodel.cn</a></td>
+<td>控制台 → API Keys</td>
+</tr>
+</tbody></table>
+<h3 id="4-3-备份配置文件"><a href="#4-3-备份配置文件" class="headerlink" title="4.3 备份配置文件"></a>4.3 备份配置文件</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cp</span> ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.backup<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="4-4-MiniMax-国内版配置"><a href="#4-4-MiniMax-国内版配置" class="headerlink" title="4.4 MiniMax 国内版配置"></a>4.4 MiniMax 国内版配置</h3><p>MiniMax 国内版 API 配置适用于中国区域用户，提供 M2.1 等高质量模型。</p>
+<p><strong>API 端点</strong>: <code>https://api.minimaxi.com/anthropic</code></p>
+<p><strong>完整配置示例</strong>:</p>
 <pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
   <span class="token property">"models"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token property">"mode"</span><span class="token operator">:</span> <span class="token string">"merge"</span><span class="token punctuation">,</span>
     <span class="token property">"providers"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token property">"minimax-cn"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
         <span class="token property">"baseUrl"</span><span class="token operator">:</span> <span class="token string">"https://api.minimaxi.com/anthropic"</span><span class="token punctuation">,</span>
-        <span class="token property">"apiKey"</span><span class="token operator">:</span> <span class="token string">"YOUR_KEY"</span><span class="token punctuation">,</span>
+        <span class="token property">"apiKey"</span><span class="token operator">:</span> <span class="token string">"YOUR_MINIMAX_API_KEY_HERE"</span><span class="token punctuation">,</span>
         <span class="token property">"api"</span><span class="token operator">:</span> <span class="token string">"anthropic-messages"</span><span class="token punctuation">,</span>
-        <span class="token property">"models"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"MiniMax-M2.1"</span><span class="token punctuation">,</span> <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"MiniMax M2.1 (China)"</span><span class="token punctuation">,</span> <span class="token property">"reasoning"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+        <span class="token property">"models"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">{</span>
+            <span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"MiniMax-M2.1"</span><span class="token punctuation">,</span>
+            <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"MiniMax M2.1 (China)"</span><span class="token punctuation">,</span>
+            <span class="token property">"reasoning"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+            <span class="token property">"input"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"text"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token property">"contextWindow"</span><span class="token operator">:</span> <span class="token number">204800</span><span class="token punctuation">,</span>
+            <span class="token property">"maxTokens"</span><span class="token operator">:</span> <span class="token number">131072</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
       <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="4-2-智谱-GLM"><a href="#4-2-智谱-GLM" class="headerlink" title="4.2 智谱 (GLM)"></a>4.2 智谱 (GLM)</h3><p><strong>端点</strong>: <code>https://open.bigmodel.cn/api/coding/paas/v4</code></p>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="4-5-智谱（GLM）配置"><a href="#4-5-智谱（GLM）配置" class="headerlink" title="4.5 智谱（GLM）配置"></a>4.5 智谱（GLM）配置</h3><p><strong>API 端点</strong>: <code>https://open.bigmodel.cn/api/coding/paas/v4</code></p>
+<p><strong>完整配置示例</strong>:</p>
 <pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
   <span class="token property">"models"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token property">"mode"</span><span class="token operator">:</span> <span class="token string">"merge"</span><span class="token punctuation">,</span>
     <span class="token property">"providers"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token property">"zhipu-cn"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
         <span class="token property">"baseUrl"</span><span class="token operator">:</span> <span class="token string">"https://open.bigmodel.cn/api/coding/paas/v4"</span><span class="token punctuation">,</span>
-        <span class="token property">"apiKey"</span><span class="token operator">:</span> <span class="token string">"YOUR_KEY"</span><span class="token punctuation">,</span>
+        <span class="token property">"apiKey"</span><span class="token operator">:</span> <span class="token string">"YOUR_ZHIPU_API_KEY_HERE"</span><span class="token punctuation">,</span>
         <span class="token property">"api"</span><span class="token operator">:</span> <span class="token string">"anthropic-messages"</span><span class="token punctuation">,</span>
-        <span class="token property">"models"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"glm-4.7"</span><span class="token punctuation">,</span> <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"GLM-4.7 (China)"</span><span class="token punctuation">,</span> <span class="token property">"reasoning"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+        <span class="token property">"models"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">{</span>
+            <span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"glm-4.7"</span><span class="token punctuation">,</span>
+            <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"GLM-4.7 (China)"</span><span class="token punctuation">,</span>
+            <span class="token property">"reasoning"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+            <span class="token property">"input"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"text"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token property">"contextWindow"</span><span class="token operator">:</span> <span class="token number">200000</span><span class="token punctuation">,</span>
+            <span class="token property">"maxTokens"</span><span class="token operator">:</span> <span class="token number">8192</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
       <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>重启生效：<code>openclaw gateway restart</code>。</p>
-<h2 id="五、局域网访问"><a href="#五、局域网访问" class="headerlink" title="五、局域网访问"></a>五、局域网访问</h2><p>编辑 <code>~/.openclaw/openclaw.json</code>，将 <code>bind</code> 改为 <code>lan</code>：</p>
-<pre class="line-numbers language-json"><code class="language-json"><span class="token property">"gateway"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-  <span class="token property">"bind"</span><span class="token operator">:</span> <span class="token string">"lan"</span><span class="token punctuation">,</span>
-  <span class="token property">"controlUi"</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token property">"allowInsecureAuth"</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="4-6-重启与验证"><a href="#4-6-重启与验证" class="headerlink" title="4.6 重启与验证"></a>4.6 重启与验证</h3><p>配置修改后，需要重启 Gateway 使配置生效：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">openclaw gateway restart<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>验证模型列表：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">openclaw models list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <hr>
-<p><em>参加 OpenClaw 虾神争霸赛，如果觉得文章对你有帮助，求各位点个赞支持下！感谢大家🙏</em></p>
-<script>
+<h2 id="五、局域网访问配置"><a href="#五、局域网访问配置" class="headerlink" title="五、局域网访问配置"></a>五、局域网访问配置</h2><p>本章节帮助用户配置 OpenClaw Web UI，使其可以通过局域网访问。</p>
+<h3 id="5-1-获取本机局域网-IP"><a href="#5-1-获取本机局域网-IP" class="headerlink" title="5.1 获取本机局域网 IP"></a>5.1 获取本机局域网 IP</h3><pre class="line-numbers language-bash"><code class="language-bash">ip addr show <span class="token operator">|</span> <span class="token function">grep</span> -E <span class="token string">"inet "</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print <span class="token variable">$2</span>}'</span> <span class="token operator">|</span> <span class="token function">cut</span> -d<span class="token string">'/'</span> -f1 <span class="token operator">|</span> <span class="token function">grep</span> -v <span class="token string">"^127"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="5-2-编辑配置文件"><a href="#5-2-编辑配置文件" class="headerlink" title="5.2 编辑配置文件"></a>5.2 编辑配置文件</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">nano</span> ~/.openclaw/openclaw.json<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="5-3-修改-Gateway-配置"><a href="#5-3-修改-Gateway-配置" class="headerlink" title="5.3 修改 Gateway 配置"></a>5.3 修改 Gateway 配置</h3><p>将 <code>bind</code> 值从 <code>loopback</code> 改为 <code>lan</code>，并添加 <code>controlUi</code> 配置：</p>
+<pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"gateway"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"port"</span><span class="token operator">:</span> <span class="token number">18789</span><span class="token punctuation">,</span>
+    <span class="token property">"mode"</span><span class="token operator">:</span> <span class="token string">"local"</span><span class="token punctuation">,</span>
+    <span class="token property">"bind"</span><span class="token operator">:</span> <span class="token string">"lan"</span><span class="token punctuation">,</span>
+    <span class="token property">"auth"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"mode"</span><span class="token operator">:</span> <span class="token string">"token"</span><span class="token punctuation">,</span>
+      <span class="token property">"token"</span><span class="token operator">:</span> <span class="token string">"your_token_here"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"controlUi"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"allowInsecureAuth"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="5-4-重启-Gateway"><a href="#5-4-重启-Gateway" class="headerlink" title="5.4 重启 Gateway"></a>5.4 重启 Gateway</h3><pre class="line-numbers language-bash"><code class="language-bash">openclaw gateway restart
+openclaw gateway status<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="5-5-访问-Web-UI"><a href="#5-5-访问-Web-UI" class="headerlink" title="5.5 访问 Web UI"></a>5.5 访问 Web UI</h3><p>根据你的局域网 IP，访问地址为：<code>http://&lt;你的局域网IP&gt;:18789/</code></p>
+<hr>
+<h2 id="六、常见问题"><a href="#六、常见问题" class="headerlink" title="六、常见问题"></a>六、常见问题</h2><h3 id="Q1-Gateway-启动失败"><a href="#Q1-Gateway-启动失败" class="headerlink" title="Q1: Gateway 启动失败"></a>Q1: Gateway 启动失败</h3><p><strong>解决方案</strong>:</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cat</span> ~/.openclaw/openclaw.json <span class="token operator">|</span> jq
+<span class="token function">tail</span> -f ~/.openclaw/logs/gateway.log
+<span class="token function">cp</span> ~/.openclaw/openclaw.json.backup ~/.openclaw/openclaw.json
+openclaw gateway restart<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="Q2-局域网无法访问"><a href="#Q2-局域网无法访问" class="headerlink" title="Q2: 局域网无法访问"></a>Q2: 局域网无法访问</h3><p><strong>解决方案</strong>:</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> ufw status
+<span class="token function">sudo</span> ufw allow 18789/tcp
+openclaw gateway status
+<span class="token function">grep</span> <span class="token string">'"bind"'</span> ~/.openclaw/openclaw.json<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="Q3-模型未显示在列表中"><a href="#Q3-模型未显示在列表中" class="headerlink" title="Q3: 模型未显示在列表中"></a>Q3: 模型未显示在列表中</h3><p><strong>解决方案</strong>:</p>
+<ol>
+<li>检查 JSON 语法是否正确</li>
+<li>确认 provider 名称与模型引用一致</li>
+<li>确认 API key 有效且有访问权限</li>
+<li>重启 Gateway：<code>openclaw gateway restart</code></li>
+</ol>
+<h3 id="Q4-认证失败-HTTP-401"><a href="#Q4-认证失败-HTTP-401" class="headerlink" title="Q4: 认证失败 (HTTP 401)"></a>Q4: 认证失败 (HTTP 401)</h3><p><strong>解决方案</strong>:</p>
+<ol>
+<li>验证 API key 格式是否正确</li>
+<li>确认 API key 未过期</li>
+<li>检查 API key 是否有访问所用 API 的权限</li>
+</ol>
+<h3 id="Q5-镜像模式不生效"><a href="#Q5-镜像模式不生效" class="headerlink" title="Q5: 镜像模式不生效"></a>Q5: 镜像模式不生效</h3><p><strong>解决方案</strong>:</p>
+<ol>
+<li>确认已执行 <code>wsl --shutdown</code> 并等待 8 秒后重新启动</li>
+<li>检查 <code>.wslconfig</code> 文件路径是否正确</li>
+<li>确认 WSL 版本为 2.0 以上</li>
+<li>更新 WSL 内核：<code>wsl --update</code></li>
+</ol>
+<h3 id="Q6-防火墙规则创建失败"><a href="#Q6-防火墙规则创建失败" class="headerlink" title="Q6: 防火墙规则创建失败"></a>Q6: 防火墙规则创建失败</h3><p><strong>问题表现</strong>：运行 <code>New-NetFirewallHyperVRule</code> 或 <code>Set-NetFirewallHyperVVMSetting</code> 时报错。</p>
+<p><strong>解决方案</strong>:</p>
+<ol>
+<li><p>确认以管理员身份运行 PowerShell</p>
+</li>
+<li><p>检查 Hyper-V 服务是否正在运行</p>
+</li>
+<li><p><strong>VMCreatorId 错误</strong>：如果使用 Hyper-V 防火墙命令报错，可能是因为硬编码的 GUID 不存在于当前系统。请改用标准防火墙命令：</p>
+<pre class="line-numbers language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># 推荐：使用标准防火墙命令（适用于 WSL2）</span>
+New<span class="token operator">-</span>NetFirewallRule <span class="token operator">-</span>DisplayName <span class="token string">"OpenClaw-Service"</span> <span class="token operator">-</span>Direction Inbound <span class="token operator">-</span>Action Allow <span class="token operator">-</span>Protocol TCP <span class="token operator">-</span>LocalPort 18789<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li><p><strong>动态获取 VMCreatorId</strong>（仅当需要使用 Hyper-V 防火墙时）：</p>
+<pre class="line-numbers language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># 获取系统所有 VM 创建者</span>
+Get<span class="token operator">-</span>NetFirewallHyperVVMCreator
+
+<span class="token comment" spellcheck="true"># 使用动态获取的 GUID 配置</span>
+Get<span class="token operator">-</span>NetFirewallHyperVVMCreator <span class="token punctuation">|</span> <span class="token function">ForEach-Object</span> <span class="token punctuation">{</span>
+    <span class="token function">Set</span><span class="token operator">-</span>NetFirewallHyperVVMSetting <span class="token operator">-</span>Name <span class="token variable">$_</span><span class="token punctuation">.</span>Name <span class="token operator">-</span>DefaultInboundAction Allow
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ol>
+<hr>
+<h2 id="相关资源"><a href="#相关资源" class="headerlink" title="相关资源"></a>相关资源</h2><ul>
+<li><a href="https://docs.clawd.bot" target="_blank" rel="noopener">OpenClaw 官方文档</a></li>
+<li><a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener">OpenClaw GitHub</a></li>
+<li><a href="https://www.minimaxi.com" target="_blank" rel="noopener">MiniMax 官网</a></li>
+<li><a href="https://bigmodel.cn" target="_blank" rel="noopener">智谱 AI 官网</a></li>
+<li><a href="https://opencode.ai" target="_blank" rel="noopener">Opencode 官网</a></li>
+<li><a href="https://github.com/spoto-team/openclaw-wsl-guide/blob/main/wsl-installation.md" target="_blank" rel="noopener">OpenClaw WSL Guide</a></li>
+</ul>
+<hr>
+<p><strong>注意</strong>：请妥善保管您的 API Key 和 Token，定期检查系统安全。</p>
+<pre><code></code></pre><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
