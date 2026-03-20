@@ -4,7 +4,7 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="三星 TV Seller Office 上架全攻略：流程、模板与 UI 说明大纲, Alex">
+    <meta name="keywords" content="三星 TV Seller Office 上架全攻略：流程、模板、加签名命令与 UI 说明大纲, Alex">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>三星 TV Seller Office 上架全攻略：流程、模板与 UI 说明大纲 | Alex</title>
+    <title>三星 TV Seller Office 上架全攻略：流程、模板、加签名命令与 UI 说明大纲 | Alex</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -309,12 +309,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">三星 TV Seller Office 上架全攻略：流程、模板与 UI 说明大纲</h1>
+                    <h1 class="description center-align post-title">三星 TV Seller Office 上架全攻略：流程、模板、加签名命令与 UI 说明大纲</h1>
                 </div>
             </div>
         </div>
@@ -489,74 +489,120 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <blockquote>
-<p><strong>前言</strong>：本文整合了 FitPulse 项目在上架三星 TV Seller Office 过程中的核心文档，包含完整的上架流程、后台字段填写模板以及提交审核所需的 UI Description PPT 中文大纲。</p>
+<p><strong>前言</strong>：本文整合了 <a href="https://github.com/Alexzzl/FitPulse" target="_blank" rel="noopener">FitPulse</a> 项目在上架三星 TV Seller Office 过程中的核心技术文档。内容涵盖完整的上架流程、后台字段填写模板、加签名发布命令，以及提交审核所需的 UI Description PPT 中文大纲。</p>
 </blockquote>
 <hr>
 <h2 id="一、三星-TV-应用上架完整流程"><a href="#一、三星-TV-应用上架完整流程" class="headerlink" title="一、三星 TV 应用上架完整流程"></a>一、三星 TV 应用上架完整流程</h2><h3 id="1-确认卖家资格"><a href="#1-确认卖家资格" class="headerlink" title="1. 确认卖家资格"></a>1. 确认卖家资格</h3><ul>
-<li><strong>Public Seller</strong>：仅限发布美国地区。</li>
-<li><strong>Partner Seller</strong>：发布美国以外（如欧洲、东南亚、中国等）地区必须申请此资格。</li>
+<li><strong>Public Seller</strong>：只能发布至美国商店。</li>
+<li><strong>Partner Seller</strong>：要发布至美国以外（如欧洲、东南亚、中国等）地区，必须申请并获得此资格。建议先开通 Seller Office 账号，再进行 Partner 申请。</li>
 </ul>
-<h3 id="2-提审准备清单"><a href="#2-提审准备清单" class="headerlink" title="2. 提审准备清单"></a>2. 提审准备清单</h3><p>在进入后台前，请确保已准备好：</p>
+<h3 id="2-提审准备清单"><a href="#2-提审准备清单" class="headerlink" title="2. 提审准备清单"></a>2. 提审准备清单</h3><p>在正式进入 <a href="https://seller.samsungapps.com/" target="_blank" rel="noopener">seller.samsungapps.com</a> 之前，请务必准备好以下素材：</p>
 <ul>
-<li>已签名的 <code>.wgt</code> 安装包及 <code>config.xml</code>。</li>
-<li><strong>图标与截图</strong>：<code>1920x1080</code> 商店图、<code>512x423</code> PNG 图标、至少 4 张 <code>JPG</code> 截图。</li>
-<li><strong>文案</strong>：英文标题、描述、关键词、隐私政策 URL、客服邮箱。</li>
-<li><strong>核心文档</strong>：App UI Description <code>PPTX</code>。</li>
+<li><strong>安装包</strong>：已签名的 <code>.wgt</code> 文件。</li>
+<li><strong>核心文件</strong>：<code>config.xml</code>（需确认 ID 和版本号）。</li>
+<li><strong>商店图</strong>：<code>1920x1080</code> 商店展示图、<code>512x423</code> PNG 图标。</li>
+<li><strong>截图</strong>：至少 4 张 <code>JPG</code> 格式的真机截图（建议涵盖 Home, Library, Programs, Player）。</li>
+<li><strong>文案</strong>：中英文标题、简短描述、详细描述、搜索关键词。</li>
+<li><strong>合规</strong>：隐私政策 URL（需公网可访问）、客服邮箱。</li>
+<li><strong>文档</strong>：App UI Description <code>PPTX</code> 文件。</li>
 </ul>
 <h3 id="3-核心步骤拆解"><a href="#3-核心步骤拆解" class="headerlink" title="3. 核心步骤拆解"></a>3. 核心步骤拆解</h3><ol>
-<li><strong>Create App</strong>：创建应用，确定默认语言。</li>
-<li><strong>App Package</strong>：上传包体，自动运行 <code>Pre-Test</code>。</li>
-<li><strong>App Images</strong>：上传商店素材，建议顺序：Home -&gt; Library -&gt; Programs -&gt; Player。</li>
-<li><strong>Service Info</strong>：填写分类、年龄分级、隐私政策及卖家信息。</li>
-<li><strong>Test Information</strong>：提供测试步骤及遥控器操作说明。</li>
-<li><strong>UI Description</strong>：上传包含页面说明、遥控器行为和流程图的 PPT。</li>
-<li><strong>Distribute</strong>：选择机型组并最终提交。</li>
+<li><strong>Create App</strong>：进入 <code>Applications &gt; Create App</code>，填写内部管理名并选定默认语言。</li>
+<li><strong>App Package</strong>：上传 <code>.wgt</code> 包，系统会自动运行 <code>Pre-Test</code>。若不通过，需根据报错修改 <code>config.xml</code> 或签名。</li>
+<li><strong>App Images</strong>：上传 1920x1080 图片、PNG 图标及 4 张截图。</li>
+<li><strong>Title/Description on TV</strong>：填写展示给用户的标题和描述。<strong>注意：描述不要包含当前未实现的功能（如搜索、支付等）</strong>。</li>
+<li><strong>Service Info</strong>：配置分类（Health/Sports）、年龄分级及卖家联系方式。</li>
+<li><strong>Verification Information</strong>：提供测试步骤、是否需要测试账号、遥控器操作说明。</li>
+<li><strong>UI Description</strong>：上传审核专用的 PPT 文档。</li>
+<li><strong>Distribute</strong>：选择目标机型组，预览无误后提交。</li>
 </ol>
 <hr>
-<h2 id="二、Seller-Office-字段填写模板-以-FitPulse-为例"><a href="#二、Seller-Office-字段填写模板-以-FitPulse-为例" class="headerlink" title="二、Seller Office 字段填写模板 (以 FitPulse 为例)"></a>二、Seller Office 字段填写模板 (以 FitPulse 为例)</h2><h3 id="1-商店展示信息-Title-Description"><a href="#1-商店展示信息-Title-Description" class="headerlink" title="1. 商店展示信息 (Title/Description)"></a>1. 商店展示信息 (Title/Description)</h3><ul>
-<li><strong>App Title</strong>: <code>FitPulse</code></li>
-<li><strong>Short Description</strong>: <code>A remote-friendly fitness app for Samsung Smart TV with guided home workouts, structured plans, and easy focus-based navigation.</code></li>
-<li><strong>Full Description</strong>: 详细描述应用如何通过遥控器操作进行家庭健身、浏览计划及查看历史记录。</li>
-<li><strong>Keywords</strong>: <code>fitness, workout, home workout, exercise, smart tv</code></li>
-</ul>
-<h3 id="2-测试信息-Verification-Info"><a href="#2-测试信息-Verification-Info" class="headerlink" title="2. 测试信息 (Verification Info)"></a>2. 测试信息 (Verification Info)</h3><ul>
-<li><strong>Login Required</strong>: <code>No</code></li>
-<li><strong>Test Steps</strong>:<ol>
-<li>Launch the app.</li>
-<li>Use directional keys to navigate the sidebar.</li>
-<li>Open a workout plan and verify the player opens correctly.</li>
-<li>Press Back to return.</li>
-</ol>
-</li>
-</ul>
+<h2 id="二、关键命令：加签名与打包"><a href="#二、关键命令：加签名与打包" class="headerlink" title="二、关键命令：加签名与打包"></a>二、关键命令：加签名与打包</h2><p>在提审前，需要使用 Tizen 证书对项目进行签名和打包。</p>
+<p><strong>项目路径示例</strong>：<code>E:\code\workspace\FitPulse0</code></p>
+<p><strong>执行打包与加签名命令</strong>：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 进入项目目录并执行签名打包</span>
+<span class="token comment" spellcheck="true"># -t: 类型 (wgt)</span>
+<span class="token comment" spellcheck="true"># -s: 证书 Profile 名称 (需在 Tizen Certificate Manager 中创建)</span>
+<span class="token comment" spellcheck="true"># --: 后面接源码目录</span>
+tizen package -t wgt -s SamsungTV -- E:\code\workspace\FitPulse0\dist<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>建议的提审前置脚本</strong>：</p>
+<pre class="line-numbers language-powershell"><code class="language-powershell">npm run build         <span class="token comment" spellcheck="true"># 构建 Web 资源</span>
+npm run capture:store  <span class="token comment" spellcheck="true"># 自动生成商店截图</span>
+npm run capture:ui     <span class="token comment" spellcheck="true"># 生成 UI 说明补充截图</span>
+npm run ppt:fill       <span class="token comment" spellcheck="true"># 自动填充 PPT 大纲内容</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
-<h2 id="三、App-UI-Description-PPT-中文大纲"><a href="#三、App-UI-Description-PPT-中文大纲" class="headerlink" title="三、App UI Description PPT 中文大纲"></a>三、App UI Description PPT 中文大纲</h2><p>三星审核非常看重 <code>UI Description</code> 文档，建议结构如下（10-12页）：</p>
+<h2 id="三、Seller-Office-字段填写模板-以-FitPulse-为例"><a href="#三、Seller-Office-字段填写模板-以-FitPulse-为例" class="headerlink" title="三、Seller Office 字段填写模板 (以 FitPulse 为例)"></a>三、Seller Office 字段填写模板 (以 FitPulse 为例)</h2><h3 id="1-Title-Description-默认语言-English"><a href="#1-Title-Description-默认语言-English" class="headerlink" title="1. Title/Description 默认语言 (English)"></a>1. Title/Description 默认语言 (English)</h3><table>
+<thead>
+<tr>
+<th align="left">字段</th>
+<th align="left">建议值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>App Title</strong></td>
+<td align="left"><code>FitPulse</code></td>
+</tr>
+<tr>
+<td align="left"><strong>Short Description</strong></td>
+<td align="left"><code>A remote-friendly fitness app for Samsung Smart TV with guided home workouts, structured plans, and easy focus-based navigation.</code></td>
+</tr>
+<tr>
+<td align="left"><strong>Full Description</strong></td>
+<td align="left"><code>FitPulse is a fitness experience designed for Samsung Smart TV. Users can browse workout recommendations, explore body-part-based training in Library, open structured plans in Classic Programs, review workout history, and start guided daily workout sessions with the TV remote. The app is optimized for large-screen viewing, directional focus navigation, and quick access to home fitness content.</code></td>
+</tr>
+<tr>
+<td align="left"><strong>Keywords</strong></td>
+<td align="left"><code>fitness, workout, home workout, exercise, smart tv</code></td>
+</tr>
+</tbody></table>
+<h3 id="2-Test-Steps-验证步骤"><a href="#2-Test-Steps-验证步骤" class="headerlink" title="2. Test Steps (验证步骤)"></a>2. Test Steps (验证步骤)</h3><p>可直接复制到后台：</p>
+<pre class="line-numbers language-text"><code class="language-text">1. Launch the app.
+2. The app opens with the onboarding flow and then reaches the Home screen.
+3. Use the remote directional keys to move focus across the sidebar and workout cards.
+4. Open Library and browse body-part workout categories.
+5. Open Classic Programs and select a workout plan.
+6. Open the plan calendar and select an available day.
+7. Start the workout from the Day Detail page.
+8. Verify the workout player opens correctly and can be controlled with the remote.
+9. Press Back to return to previous screens.
+10. Open Me and History to verify the history list page.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h2 id="四、App-UI-Description-PPT-中文大纲"><a href="#四、App-UI-Description-PPT-中文大纲" class="headerlink" title="四、App UI Description PPT 中文大纲"></a>四、App UI Description PPT 中文大纲</h2><p>三星审核员通过此文档理解应用的交互逻辑。建议结构如下：</p>
 <ol>
-<li><strong>封面 (Cover)</strong>：应用名称、版本、平台信息。</li>
-<li><strong>应用概览 (App Overview)</strong>：一句话描述应用核心价值（如：为大屏优化的家庭健身助手）。</li>
-<li><strong>页面流转图 (Screen Flow)</strong>：展示从 Launch 到完成训练的完整路径。</li>
-<li><strong>核心页面拆解</strong>：<ul>
-<li><strong>Home</strong>: 展示推荐内容与活动趋势。</li>
-<li><strong>Library</strong>: 展示按部位分类的训练库。</li>
-<li><strong>Workout Player</strong>: 展示引导式播放界面。</li>
+<li><strong>封面 (Cover)</strong>：应用名称、当前版本号、所属分类、卖家名称。</li>
+<li><strong>应用概览 (App Overview)</strong>：一句话说明核心功能。强调为大屏优化及遥控器操作。</li>
+<li><strong>页面流转图 (Screen Flow)</strong>：<ul>
+<li><code>Launch -&gt; Welcome -&gt; Home -&gt; Library/Programs -&gt; Player -&gt; History</code>。</li>
 </ul>
 </li>
-<li><strong>遥控器行为 (Remote Control)</strong>：明确上下左右（焦点移动）、确定（选择）、返回（退出）的功能逻辑。</li>
-<li><strong>测试路径推荐</strong>：引导审核员按 Home -&gt; Library -&gt; Start Workout 路径验证。</li>
+<li><strong>核心页面详解</strong>：<ul>
+<li><strong>Home</strong>: 主仪表盘，展示最近活动和每日推荐。</li>
+<li><strong>Library</strong>: 按身体部位分类的训练库浏览。</li>
+<li><strong>Classic Programs</strong>: 结构化训练计划与日历展示。</li>
+<li><strong>Workout Player</strong>: 核心播放界面，展示动图引导和进度。</li>
+</ul>
+</li>
+<li><strong>遥控器按键映射 (Remote Control Behavior)</strong>：<ul>
+<li><code>Up/Down/Left/Right</code>: 焦点移动（边缘不循环）。</li>
+<li><code>Enter</code>: 进入/确认。</li>
+<li><code>Back</code>: 返回上一级或退出。</li>
+</ul>
+</li>
+<li><strong>特别注意事项</strong>：<ul>
+<li>本版本不含账号体系（无需登录）。</li>
+<li>本版本不含内购功能。</li>
+</ul>
+</li>
 </ol>
 <hr>
-<h2 id="四、特别注意事项-避坑指南"><a href="#四、特别注意事项-避坑指南" class="headerlink" title="四、特别注意事项 (避坑指南)"></a>四、特别注意事项 (避坑指南)</h2><ul>
-<li><strong>ID 一致性</strong>：<code>config.xml</code> 里的 ID 必须与后台创建的应用信息完全一致。</li>
-<li><strong>焦点逻辑</strong>：审核员会重点测试焦点是否会丢失或死循环。</li>
-<li><strong>文案真实性</strong>：不要在描述中写尚未实现的功能（如订阅付费、搜索、社交分享等）。</li>
-<li><strong>图片格式</strong>：截图必须是 <code>JPG</code> 且不满 4 张会报错。</li>
-</ul>
+<h2 id="五、避坑指南"><a href="#五、避坑指南" class="headerlink" title="五、避坑指南"></a>五、避坑指南</h2><ol>
+<li><strong>焦点丢失</strong>：这是 TV 端审核失败的第一大原因。必须保证每个页面进去都有焦点，且焦点移动符合预期。</li>
+<li><strong>包名一致性</strong>：<code>config.xml</code> 的 <code>&lt;name&gt;</code> 必须与后台 <code>App Title</code> 高度一致，否则会有审核警告。</li>
+<li><strong>隐私政策</strong>：URL 必须是直接可见的 HTML 页面，且需包含数据收集及注销的相关说明（即便不要求登录）。</li>
+</ol>
 <hr>
 <blockquote>
-<p><strong>关联资源</strong>：</p>
-<ul>
-<li><a href="https://github.com/Alexzzl/FitPulse" target="_blank" rel="noopener">FitPulse GitHub 仓库</a></li>
-</ul>
+<p><strong>项目源码</strong>：<a href="https://github.com/Alexzzl/FitPulse" target="_blank" rel="noopener">GitHub - Alexzzl/FitPulse</a></p>
 </blockquote>
 <script>
         document.querySelectorAll('.github-emoji')
