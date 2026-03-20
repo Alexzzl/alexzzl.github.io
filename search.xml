@@ -64,6 +64,39 @@
     
     
     <entry>
+      <title>树莓派 × OpenClaw｜24 小时本地运行，一键安装超低成本方案</title>
+      <link href="/2026/03/12/raspberry-pi-openclaw-install-guide/"/>
+      <url>/2026/03/12/raspberry-pi-openclaw-install-guide/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>原文链接</strong>：<a href="https://my.feishu.cn/wiki/A8Wow5CM6ixihzkYqnjcZWBonWc" target="_blank" rel="noopener">树莓派 × OpenClaw｜24 小时本地运行，一键安装超低成本方案</a><br><strong>说明</strong>：本方案使用树莓派 5 作为硬件载体，通过 1Panel 实现 OpenClaw 的快速部署，打造 7×24 小时在线的本地 AI 助手。</p></blockquote><h2 id="一、硬件准备"><a href="#一、硬件准备" class="headerlink" title="一、硬件准备"></a>一、硬件准备</h2><p>推荐使用 <strong>树莓派 5</strong>，全套成本约 400-500 元，是 Mac Mini 的完美平替。组装时建议加装散热风扇以保证长期运行稳定。</p><h2 id="二、安装操作系统"><a href="#二、安装操作系统" class="headerlink" title="二、安装操作系统"></a>二、安装操作系统</h2><ol><li>下载 <strong>Raspberry Pi Imager</strong>。</li><li>烧录 <strong>Raspberry Pi OS (64-bit)</strong>。</li><li>在“Advanced options”中开启 SSH，配置 Wi-Fi 和账户信息。</li><li>插入 microSD 卡，连接显示器和键盘，插电启动。</li></ol><h2 id="三、联网与远程连接"><a href="#三、联网与远程连接" class="headerlink" title="三、联网与远程连接"></a>三、联网与远程连接</h2><ol><li>获取树莓派 IP：<code>ifconfig</code>。</li><li>开启接口：在 <code>Raspberry Pi Configuration</code> -&gt; <code>Interfaces</code> 中打开 <strong>SSH</strong> 和 <strong>VNC</strong>。</li><li>远程登录：<code>ssh pi@&lt;树莓派IP&gt;</code>。</li></ol><h2 id="四、一键安装-1Panel-与-OpenClaw"><a href="#四、一键安装-1Panel-与-OpenClaw" class="headerlink" title="四、一键安装 1Panel 与 OpenClaw"></a>四、一键安装 1Panel 与 OpenClaw</h2><h3 id="4-1-安装-1Panel"><a href="#4-1-安装-1Panel" class="headerlink" title="4.1 安装 1Panel"></a>4.1 安装 1Panel</h3><p>切换至 root 用户并执行：</p><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">bash</span> -c <span class="token string">"<span class="token variable"><span class="token variable">$(</span>curl -sSL https://resource.fit2cloud.com/1panel/package/v2/quick_start.sh<span class="token variable">)</span></span>"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="4-2-安装-OpenClaw"><a href="#4-2-安装-OpenClaw" class="headerlink" title="4.2 安装 OpenClaw"></a>4.2 安装 OpenClaw</h3><ol><li>访问 1Panel 面板，进入“应用商店” -&gt; “AI” 标签。</li><li>找到 <strong>OpenClaw</strong> 点击安装。</li><li><strong>配置模型</strong>：在“智能体”模块中创建模型账号，填入 API Key。</li><li><strong>创建智能体</strong>：关联模型并开启端口外部访问。</li></ol><h2 id="五、外部访问配置"><a href="#五、外部访问配置" class="headerlink" title="五、外部访问配置"></a>五、外部访问配置</h2><ol><li>在 <code>data/conf/openclaw.json</code> 中找到 <code>gateway</code> 下的 <code>auth token</code>。</li><li>在 1Panel 应用参数中，将 token 粘贴到令牌字段。</li><li>配置 Web 访问地址：<code>&lt;树莓派IP&gt;:18789?token=你的TOKEN</code>。</li></ol><h2 id="六、配置飞书插件"><a href="#六、配置飞书插件" class="headerlink" title="六、配置飞书插件"></a>六、配置飞书插件</h2><p>执行以下指令安装飞书官方 OpenClaw 插件：</p><pre class="line-numbers language-bash"><code class="language-bash">npx -y https://sf3-cn.feishucdn.com/obj/open-platform-opendoc/8ab6e7a04c17db1becfcbda8ca35f091_1rCCFRWlRV.tgz <span class="token function">install</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>按照提示扫码创建机器人或关联已有机器人。</p><h2 id="七、进阶：使用海外模型-Mihomo"><a href="#七、进阶：使用海外模型-Mihomo" class="headerlink" title="七、进阶：使用海外模型 (Mihomo)"></a>七、进阶：使用海外模型 (Mihomo)</h2><p>如需访问海外模型，可安装 Mihomo (原 Clash.Meta) 开启 TUN 模式实现透明代理。</p><h3 id="常用命令汇总"><a href="#常用命令汇总" class="headerlink" title="常用命令汇总"></a>常用命令汇总</h3><ul><li>查看日志：<code>tail -f ~/.openclaw/logs/gateway.log</code></li><li>重启服务：<code>openclaw gateway restart</code></li></ul><hr><p><em>全部搞定后，拔掉键盘鼠标显示器，一个插电的树莓派就是你的 24 小时 AI 管家了！🦾</em></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> OpenClaw </tag>
+            
+            <tag> AI </tag>
+            
+            <tag> 树莓派 </tag>
+            
+            <tag> RaspberryPi </tag>
+            
+            <tag> 1Panel </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>深圳失业金领取全攻略：从申请到签到</title>
       <link href="/2026/03/07/receiving-unemployment-benefits/"/>
       <url>/2026/03/07/receiving-unemployment-benefits/</url>
